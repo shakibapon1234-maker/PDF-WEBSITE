@@ -1567,6 +1567,18 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
               PDF Conversion
             </button>
+            <button class="manual-tab-btn" onclick="switchManualTab(event, 'tab-ai')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><path d="M10 12h4M10 16h4"></path><rect x="5" y="8" width="14" height="12" rx="2"></rect></svg>
+              AI Summarizer
+            </button>
+            <button class="manual-tab-btn" onclick="switchManualTab(event, 'tab-translate')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6M4 14l6-6M2 5h10M7 2v3M22 22l-5-10-5 10M14 18h6"></path></svg>
+              Auto Translation
+            </button>
+            <button class="manual-tab-btn" onclick="switchManualTab(event, 'tab-save')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+              Project Save & Resume
+            </button>
           </div>
           
           <!-- Content panel -->
@@ -1654,6 +1666,49 @@
               </ul>
               <div class="manual-tip">
                 <strong>💡 গুরুত্বপূর্ণ টিপস:</strong> অফলাইন কনভার্টারটি ফাইলের আসল ফন্ট, ইমেজ লেআউট এবং টেবিলের গ্রিড ফরম্যাট সম্পূর্ণ অক্ষুণ্ণ রাখে।
+              </div>
+            </div>
+
+            <!-- AI Summarizer Tab -->
+            <div id="tab-ai" class="manual-tab-content">
+              <h3>এআই অ্যাসিস্ট্যান্ট ও সারাংশকরণ (AI Summarizer & Chat)</h3>
+              <p>আপনার দীর্ঘ পিডিএফ ডকুমেন্ট, রিসার্চ পেপার বা ট্যাক্স রিপোর্টের মূল বিষয়বস্তু এক ক্লিকেই সংক্ষেপ করুন এবং যেকোনো প্রশ্ন জিজ্ঞেস করে বিস্তারিত উত্তর পান।</p>
+              <div class="manual-tip" style="margin-bottom: 20px; border-color: rgba(255, 77, 109, 0.4); background: rgba(255, 77, 109, 0.05);">
+                <strong>⚠️ গুরুত্বপূর্ণ নোটিশ (API Configuration):</strong> এআই ফিচারগুলো চালাতে অ্যাপের সেটিংস <strong>(Settings)</strong> অপশনে গিয়ে আপনার নিজস্ব <strong>Gemini API, OpenAI API বা Anthropic API Key</strong> সেভ করতে হবে। এপিআই কী সেটআপ না করা পর্যন্ত এআই ফিচারগুলো ব্যবহার করা যাবে না।
+              </div>
+              <ul class="manual-steps">
+                <li><strong>ধাপ ১:</strong> অ্যাপের ডানদিকের উপরে থাকা <strong>Settings (গিয়ার আইকন)</strong> এ ক্লিক করুন।</li>
+                <li><strong>ধাপ ২:</strong> এআই এপিআই সেটিংসে গিয়ে আপনার এপিআই কী (যেমন: Gemini API Key) ইনপুট দিয়ে <strong>Save settings</strong>-এ ক্লিক করুন।</li>
+                <li><strong>ধাপ ৩:</strong> এবার সাইডবার থেকে <strong>AI Assistant</strong> অপশন সিলেক্ট করে ফাইলটি লোড করুন।</li>
+                <li><strong>ধাপ ৪:</strong> <strong>Summarize Document</strong> এ ক্লিক করে সারসংক্ষেপ তৈরি করুন অথবা চ্যাটবক্সে ফাইলের ব্যাপারে প্রশ্ন লিখুন।</li>
+              </ul>
+            </div>
+            
+            <!-- Auto Translation Tab -->
+            <div id="tab-translate" class="manual-tab-content">
+              <h3>পিডিএফ ডকুমেন্ট অনুবাদ (Auto Translation)</h3>
+              <p>যেকোনো বিদেশি ভাষায় থাকা পিডিএফ ফাইলকে তার মূল ফন্ট, ইমেজ লেআউট এবং পেজ ডিজাইন ঠিক রেখে বাংলায় অনুবাদ করুন।</p>
+              <div class="manual-tip" style="margin-bottom: 20px; border-color: rgba(255, 77, 109, 0.4); background: rgba(255, 77, 109, 0.05);">
+                <strong>⚠️ গুরুত্বপূর্ণ নোটিশ (API Configuration):</strong> এটিও এআই চালিত ফিচার হওয়ার কারণে অনুবাদ সম্পন্ন করতে সেটিংস <strong>(Settings)</strong> থেকে অবশ্যই আপনার নিজস্ব এপিআই কী সেটআপ করা থাকতে হবে, অন্যথায় অনুবাদ প্রক্রিয়া লক থাকবে।
+              </div>
+              <ul class="manual-steps">
+                <li><strong>ধাপ ১:</strong> অ্যাপের সাইডবার থেকে <strong>Auto Translation</strong> মেনু সিলেক্ট করুন।</li>
+                <li><strong>ধাপ ২:</strong> যে ফাইলটি অনুবাদ করতে চান তা ওপেন করুন এবং সোর্স ও টার্গেট ভাষা (যেমন: English থেকে Bengali) সিলেক্ট করুন।</li>
+                <li><strong>ধাপ ৩:</strong> <strong>Translate Document</strong> এ ক্লিক করুন। এআই আপনার এপিআই কী ব্যবহার করে ব্যাকগ্রাউন্ডে টেক্সটগুলো অনুবাদ করে মূল লেআউটে প্রতিস্থাপন করবে।</li>
+              </ul>
+            </div>
+            
+            <!-- Project Save & Resume Tab -->
+            <div id="tab-save" class="manual-tab-content">
+              <h3>অসম্পূর্ণ কাজ সংরক্ষণ ও পুনরায় শুরু (Project Save & Resume)</h3>
+              <p>কাজের মাঝে কোনো ফাইল এডিট করা অসম্পূর্ণ থাকলে তা সেভ করে রাখুন। পরবর্তীতে যেকোনো সময় একদম নিখুঁতভাবে শেষ অবস্থা থেকে পুনরায় কাজ শুরু করতে পারবেন।</p>
+              <ul class="manual-steps">
+                <li><strong>ধাপ ১:</strong> ডকুমেন্টে কোনো এডিটিং বা পরিমাপ করা অসম্পূর্ণ থাকলে মেনুবার থেকে <strong>File -> Save Project</strong> সিলেক্ট করুন (বা <code>Ctrl + S</code> চাপুন)।</li>
+                <li><strong>ধাপ ২:</strong> এটি আপনার চলমান এডিটিং লেয়ার, মার্কআপ এবং হিস্ট্রি সহ একটি <code>.agproj</code> প্রজেক্ট ফাইল সেভ করবে।</li>
+                <li><strong>ধাপ ৩:</strong> পরবর্তীতে অ্যাপ ওপেন করে <strong>Open Project</strong> এ ক্লিক করে সেই <code>.agproj</code> ফাইলটি সিলেক্ট করলেই অসম্পূর্ণ কাজটি হুবহু রিলোড হবে।</li>
+              </ul>
+              <div class="manual-tip">
+                <strong>💡 গুরুত্বপূর্ণ টিপস:</strong> এটি মূল পিডিএফের ক্ষতি না করে আপনার করা প্রজেক্ট এডিট মোড সেভ রাখে, ফলে পরবর্তীতে ফাইল মডিফাই করা অত্যন্ত সহজ ও দ্রুত হয়।
               </div>
             </div>
           </div>
