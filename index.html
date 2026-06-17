@@ -63,6 +63,11 @@
       font-family: var(--font-body);
       line-height: 1.6;
       overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 1px 1px, rgba(184, 41, 249, 0.04) 1.5px, transparent 0),
+        linear-gradient(rgba(184, 41, 249, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.01) 1px, transparent 1px);
+      background-size: 24px 24px, 48px 48px, 48px 48px;
     }
 
     /* Custom Scrollbar */
@@ -104,9 +109,28 @@
     .nebula-blob {
       position: absolute;
       border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.15;
-      animation: float-slow 25s infinite ease-in-out alternate;
+      filter: blur(150px);
+      opacity: 0.32;
+      animation: float-slow 22s infinite ease-in-out alternate;
+      mix-blend-mode: screen;
+    }
+
+    .blob-orange {
+      background: var(--accent-orange);
+      width: 450px;
+      height: 450px;
+      top: 50%;
+      left: -250px;
+      animation-delay: -8s;
+    }
+
+    .blob-green {
+      background: var(--accent-green);
+      width: 500px;
+      height: 500px;
+      bottom: 10%;
+      right: -250px;
+      animation-delay: -15s;
     }
 
     .blob-purple {
@@ -1039,6 +1063,140 @@
         gap: 40px;
       }
     }
+    }
+
+    /* Interactive User Manual Styles */
+    .manual-section {
+      padding: 80px 0;
+      position: relative;
+    }
+    .manual-card {
+      background: rgba(14, 14, 27, 0.65);
+      border: 1px solid rgba(184, 41, 249, 0.25);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(184, 41, 249, 0.05);
+      overflow: hidden;
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+    }
+    .manual-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 500px;
+    }
+    .manual-sidebar {
+      background: rgba(6, 6, 12, 0.5);
+      border-right: 1px solid var(--border);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .manual-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-dim);
+      padding: 14px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: var(--font-headings);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: left;
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .manual-tab-btn svg {
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .manual-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.03);
+      color: #fff;
+    }
+    .manual-tab-btn.active {
+      background: rgba(184, 41, 249, 0.12);
+      border-color: rgba(184, 41, 249, 0.4);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(184, 41, 249, 0.15);
+    }
+    .manual-tab-btn.active svg {
+      color: var(--primary);
+    }
+    .manual-content-panel {
+      padding: 40px;
+      overflow-y: auto;
+    }
+    .manual-tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease-out;
+    }
+    .manual-tab-content.active {
+      display: block;
+    }
+    .manual-tab-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      background: linear-gradient(90deg, #fff, var(--text-dim));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .manual-tab-content p {
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+    }
+    .manual-steps {
+      margin-left: 20px;
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .manual-steps li {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-dim);
+    }
+    .manual-steps li strong {
+      color: #fff;
+    }
+    .manual-tip {
+      background: rgba(0, 212, 255, 0.05);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .manual-tip strong {
+      color: var(--accent-blue);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      .manual-grid {
+        grid-template-columns: 1fr;
+      }
+      .manual-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 16px;
+      }
+      .manual-tab-btn {
+        flex-shrink: 0;
+        width: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1048,6 +1206,8 @@
     <div class="nebula-blob blob-purple"></div>
     <div class="nebula-blob blob-cyan"></div>
     <div class="nebula-blob blob-pink"></div>
+    <div class="nebula-blob blob-orange"></div>
+    <div class="nebula-blob blob-green"></div>
   </div>
 
   <!-- Header -->
@@ -1068,6 +1228,7 @@
       <nav class="nav-links">
         <a href="#why-us">Why Offline</a>
         <a href="#features">Features</a>
+        <a href="#manual">User Manual</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
         <a href="https://gumroad.com/l/antigravity-pdf-pro" class="btn-header gumroad-button">Buy Now</a>
@@ -1223,7 +1384,7 @@
         <!-- Feature 2: PDF Compare -->
         <div class="feature-card f-compare">
           <div class="feature-icon-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line><path d="M7 8h2M7 12h2M15 8h2M15 12h2M15 16h2"></path></svg>
           </div>
           <h3>Side-by-Side Compare</h3>
           <p>Instantly compare two versions of a PDF document. Highlighting visual and structural text additions, deletions, and updates—ideal for CA auditors.</p>
@@ -1232,7 +1393,7 @@
         <!-- Feature 3: Offline OCR -->
         <div class="feature-card f-ocr">
           <div class="feature-icon-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M7 21v-4a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v4"></path><circle cx="12" cy="7" r="2"></circle></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect><path d="M7 9h10M7 13h10M7 17h6"></path><path d="M12 2v3M12 19v3"></path></svg>
           </div>
           <h3>Offline OCR Reader</h3>
           <p>Convert scanned PDFs or images into fully selectable, searchable, and exportable text format instantly on your GPU. No cloud server involved.</p>
@@ -1250,7 +1411,7 @@
         <!-- Feature 5: Security & Protect -->
         <div class="feature-card f-security">
           <div class="feature-icon-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path><path d="M12 15v3"></path></svg>
           </div>
           <h3>Encrypt & Sign</h3>
           <p>Protect PDFs with industry-grade passwords. Restrict printing, editing, or copying. Add custom watermark logos and stamp digital signatures securely.</p>
@@ -1259,10 +1420,91 @@
         <!-- Feature 6: Bulk Organizer -->
         <div class="feature-card f-organizer">
           <div class="feature-icon-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
           </div>
           <h3>Merge, Split & Crop</h3>
           <p>Rearrange, delete, rotate, insert, or crop PDF pages. Merge multiple documents into a single invoice packet, or split large reports in seconds.</p>
+        </div>
+
+        <!-- Feature 7: Bates Numbering -->
+        <div class="feature-card f-security">
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><path d="M9 6h6M9 10h6M9 14h3"></path></svg>
+          </div>
+          <h3>Bates Numbering</h3>
+          <p>Add sequential numbers, page stamps, dates, or custom legal labels to all headers and footers of thousands of PDF pages in a single batch.</p>
+        </div>
+
+        <!-- Feature 8: Scale Ruler -->
+        <div class="feature-card f-ocr">
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="2" ry="2"></rect><path d="M6 7v4M10 7v3M14 7v4M18 7v3M6 17v-4M10 17v-3M14 17v-4M18 17v-3"></path></svg>
+          </div>
+          <h3>Scale Ruler & Measure</h3>
+          <p>Accurately measure distances, perimeters, and polygon areas directly from architectural drawings, blueprints, maps, and engineering PDFs.</p>
+        </div>
+
+        <!-- Feature 9: Form Creator -->
+        <div class="feature-card f-editor">
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M9 17h6M9 13h6M9 9h3"></path></svg>
+          </div>
+          <h3>Interactive Form Creator</h3>
+          <p>Design custom fillable forms with text fields, checkboxes, radio buttons, combo boxes, and buttons. Supports locking form inputs securely.</p>
+        </div>
+
+        <!-- Feature 10: Auto-Redaction -->
+        <div class="feature-card f-compare">
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M6 10h12v4H6z" fill="currentColor"></path><path d="M9 6h6"></path></svg>
+          </div>
+          <h3>Auto-Redaction & Masking</h3>
+          <p>Search and permanently blackout sensitive details like TINs, NIDs, emails, or names across the entire document. Erased from backend too.</p>
+        </div>
+
+        <!-- Feature 11: PDF Repair -->
+        <div class="feature-card f-converters">
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+          </div>
+          <h3>PDF Repair & Compress</h3>
+          <p>Scan and rebuild damaged, corrupt, or unreadable PDF files. Compress files without losing vector clarity for easy email attachments.</p>
+        </div>
+
+        <!-- Feature 12: Watermark -->
+        <div class="feature-card f-organizer">
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><circle cx="12" cy="11" r="3"></circle></svg>
+          </div>
+          <h3>Custom Watermark & Stamps</h3>
+          <p>Protect your ownership. Apply dynamic, transparent text or image watermarks, company seals, and standard stamps (APPROVED, CONFIDENTIAL).</p>
+        </div>
+
+        <!-- Feature 13: Content Extraction -->
+        <div class="feature-card f-security">
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1M12 2v14M12 16l-4-4M12 16l4-4"></path></svg>
+          </div>
+          <h3>Asset & Table Extraction</h3>
+          <p>Automatically extract all images, vectors, attachments, embedded fonts, or raw tabular grid data from your PDFs to raw formats.</p>
+        </div>
+
+        <!-- Feature 14: PDF Portfolio -->
+        <div class="feature-card f-editor">
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path><path d="M12 11v6M9 14h6"></path></svg>
+          </div>
+          <h3>PDF Portfolio Compiler</h3>
+          <p>Package multiple file formats—Excel spreadsheets, Word docs, CAD maps, and images—into a single, clean, searchable PDF portfolio file.</p>
+        </div>
+
+        <!-- Feature 15: Annotation Hub -->
+        <div class="feature-card f-ocr">
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </div>
+          <h3>Comfort View & Annotate</h3>
+          <p>Enable native dark viewing mode. Highlight text, add sticky notes, insert comments, draw freehand annotations, and collaborate with ease.</p>
         </div>
       </div>
 
@@ -1283,6 +1525,137 @@
         <div class="stat-item">
           <h3>0 ms</h3>
           <p>Server Wait Time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive User Manual Section -->
+  <section id="manual" class="manual-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>ইউজার ম্যানুয়াল ও গাইডলাইন</h2>
+        <p>অফলাইন পিডিএফ এডিটর অ্যাপের গুরুত্বপূর্ণ ফিচারের সহজ ব্যবহারবিধি নিচে দেওয়া হলো।</p>
+      </div>
+      
+      <div class="manual-card">
+        <div class="manual-grid">
+          <!-- Sidebar tabs -->
+          <div class="manual-sidebar">
+            <button class="manual-tab-btn active" onclick="switchManualTab(event, 'tab-redact')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M6 10h12v4H6z" fill="currentColor"></path><path d="M9 6h6"></path></svg>
+              Auto-Redaction
+            </button>
+            <button class="manual-tab-btn" onclick="switchManualTab(event, 'tab-ruler')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="2" ry="2"></rect><path d="M6 7v4M10 7v3M14 7v4M18 7v3M6 17v-4M10 17v-3M14 17v-4M18 17v-3"></path></svg>
+              Scale Ruler
+            </button>
+            <button class="manual-tab-btn" onclick="switchManualTab(event, 'tab-bates')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><path d="M9 6h6M9 10h6M9 14h3"></path></svg>
+              Bates Stamps
+            </button>
+            <button class="manual-tab-btn" onclick="switchManualTab(event, 'tab-flatten')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M9 17h6M9 13h6M9 9h3"></path></svg>
+              Form Flattening
+            </button>
+            <button class="manual-tab-btn" onclick="switchManualTab(event, 'tab-compare')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line><path d="M7 8h2M7 12h2M15 8h2M15 12h2M15 16h2"></path></svg>
+              PDF Comparison
+            </button>
+            <button class="manual-tab-btn" onclick="switchManualTab(event, 'tab-convert')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+              PDF Conversion
+            </button>
+          </div>
+          
+          <!-- Content panel -->
+          <div class="manual-content-panel">
+            <!-- Redact Tab -->
+            <div id="tab-redact" class="manual-tab-content active">
+              <h3>সংবেদনশীল তথ্য ব্ল্যাকআউট (Redaction)</h3>
+              <p>আপনার ক্লায়েন্টদের বা ফাইলের গোপনীয় ডেটা যেমন ব্যাংক অ্যাকাউন্ট নম্বর, সোশ্যাল সিকিউরিটি নম্বর বা ব্যক্তিগত নাম স্থায়ীভাবে সরিয়ে ফেলুন। এটি ফাইল থেকে ডাটাটি চিরতরে মুছে দেয়।</p>
+              <ul class="manual-steps">
+                <li><strong>ধাপ ১:</strong> উপরের মেনুবার থেকে <strong>Redact</strong> টুলে ক্লিক করুন।</li>
+                <li><strong>ধাপ ২:</strong> যে লেখা বা ইমেজটি সেন্সর করতে চান, মাউস দিয়ে তা ড্র্যাগ করে সিলেক্ট করুন।</li>
+                <li><strong>ধাপ ৩:</strong> সিলেকশন নিশ্চিত করার পর <strong>Apply Redactions</strong>-এ ক্লিক করুন।</li>
+                <li><strong>ধাপ ৪:</strong> ফাইলটি সেভ করুন। ব্যস! ডেটাটি ফাইল থেকে চিরতরে মুছে যাবে।</li>
+              </ul>
+              <div class="manual-tip">
+                <strong>💡 গুরুত্বপূর্ণ টিপস:</strong> এটি কেবল কালো দাগ দেয় না, পিডিএফ ফাইলের মেটাডেটা এবং ব্যাকএন্ড কোড থেকেও লেখাটি স্থায়ীভাবে মুছে ফেলে যাতে সার্চ করে আর পাওয়া না যায়।
+              </div>
+            </div>
+            
+            <!-- Scale Ruler Tab -->
+            <div id="tab-ruler" class="manual-tab-content">
+              <h3>স্কেল রুলার ও পরিমাপক (Scale Ruler & Measurement)</h3>
+              <p>ড্রয়িং, ম্যাপ বা ব্লু-প্রিন্ট পিডিএফের নিখুঁত পরিমাপ নির্ধারণের জন্য এটি একটি অনন্য অফলাইন টুল।</p>
+              <ul class="manual-steps">
+                <li><strong>ধাপ ১:</strong> প্রথমে টুলবার থেকে <strong>Measurement</strong> সিলেক্ট করে ড্রয়িংয়ের নির্দিষ্ট একটি জানা দূরত্ব দিয়ে স্কেল ক্যালিব্রেট করুন (যেমন: ১ ইঞ্চি = ১০ ফুট)।</li>
+                <li><strong>ধাপ ২:</strong> এবার যেকোনো দুইটি বিন্দুর মাঝে মাউস দিয়ে লাইন টেনে সরাসরি দৈর্ঘ্য পরিমাপ করুন।</li>
+                <li><strong>ধাপ ৩:</strong> যেকোনো বহুভুজ বা নির্দিষ্ট এলাকা সিলেক্ট করে অটোমেটিক ক্ষেত্রফল (Area) নির্ণয় করুন।</li>
+              </ul>
+              <div class="manual-tip">
+                <strong>💡 গুরুত্বপূর্ণ টিপস:</strong> আপনি চাইলে পরিমাপের ইউনিট যেমন মিলিমিটার, সেন্টিমিটার, ইঞ্চি বা ফুটে পরিবর্তন করতে পারেন।
+              </div>
+            </div>
+            
+            <!-- Bates Stamps Tab -->
+            <div id="tab-bates" class="manual-tab-content">
+              <h3>বেটস নাম্বারিং ও ডকুমেন্ট লেবেলিং (Bates Numbering)</h3>
+              <p>আইনি ডকুমেন্টস, ট্যাক্স ফাইল এবং বড় প্রজেক্ট রিপোর্টের সিকোয়েন্সিয়াল ইনডেক্সিং এবং ট্র্যাকিংয়ের জন্য অত্যন্ত উপযোগী।</p>
+              <ul class="manual-steps">
+                <li><strong>ধাপ ১:</strong> <strong>Tools</strong> মেনু থেকে <strong>Bates Numbering</strong> অপশনটি বেছে নিন।</li>
+                <li><strong>ধাপ ২:</strong> প্রিফিক্স (Prefix) যেমন <code>TAX-2026-</code> এবং সাফিক্স দিয়ে কত ডিজিটের সিরিয়াল চান (যেমন: <code>0001</code>) তা ঠিক করুন।</li>
+                <li><strong>ধাপ ৩:</strong> পেজের হেডার বা ফুটারের কোন পজিশনে নম্বর বসবে তা সিলেক্ট করুন (যেমন: bottom-right)।</li>
+                <li><strong>ধাপ ৪:</strong> ওকে চাপলে নিমেষেই শত শত পাতার ফাইলে স্বয়ংক্রিয়ভাবে সিরিয়াল নম্বর চলে আসবে।</li>
+              </ul>
+              <div class="manual-tip">
+                <strong>💡 গুরুত্বপূর্ণ টিপস:</strong> আপনি চাইলে একসঙ্গে একাধিক পিডিএফ ফাইলে সিকোয়েন্সিয়াল বেটস নাম্বার অ্যাপ্লাই করতে পারেন।
+              </div>
+            </div>
+            
+            <!-- Form Flattening Tab -->
+            <div id="tab-flatten" class="manual-tab-content">
+              <h3>ইন্টারঅ্যাক্টিভ ফরম ফ্ল্যাটেনিং (Form Flattening)</h3>
+              <p>পিডিএফ ফরম ফিলাপ করার পর ফর্মে থাকা টেক্সট ফিল্ড, ড্রপডাউন এবং চেকবক্সকে সাধারণ পেজ এলিমেন্টে রূপান্তর করে লক করার প্রক্রিয়া।</p>
+              <ul class="manual-steps">
+                <li><strong>ধাপ ১:</strong> ইনপুট ডেটা সহ পিডিএফ ফর্মটি রিডারে খুলুন।</li>
+                <li><strong>ধাপ ২:</strong> মেনু থেকে <strong>Form Tools</strong>-এ গিয়ে <strong>Flatten Form</strong>-এ ক্লিক করুন।</li>
+                <li><strong>ধাপ ৩:</strong> কনফার্ম করুন। আপনার ফর্মে থাকা সমস্ত এডিটেবল ইনপুট বক্সে থাকা ডাটা সাধারণ টেক্সট ও ডিজাইনে পরিণত হবে।</li>
+              </ul>
+              <div class="manual-tip">
+                <strong>💡 গুরুত্বপূর্ণ টিপস:</strong> ফরম ফ্ল্যাটেন করার পর অন্য কেউ ফর্মের কোনো ফিল্ডের মান এডিট বা পরিবর্তন করতে পারবে না। এটি সাবমিট করার জন্য নিরাপদ।
+              </div>
+            </div>
+            
+            <!-- PDF Comparison Tab -->
+            <div id="tab-compare" class="manual-tab-content">
+              <h3>পাশাপাশি ডকুমেন্ট তুলনা (Side-by-Side Comparison)</h3>
+              <p>যেকোনো চুক্তিপত্র বা রিপোর্টের দুইটি সংস্করণের মধ্যকার সূক্ষ্ম পার্থক্যগুলো স্বয়ংক্রিয়ভাবে খুঁজে বের করুন।</p>
+              <ul class="manual-steps">
+                <li><strong>ধাপ ১:</strong> অ্যাপে গিয়ে <strong>Compare PDFs</strong> অপশনে ক্লিক করে মূল ফাইল এবং সংশোধিত ফাইলটি ইম্পোর্ট করুন।</li>
+                <li><strong>ধাপ ২:</strong> <strong>Run Analysis</strong>-এ ক্লিক করুন।</li>
+                <li><strong>ধাপ ৩:</strong> নতুন লেখা সবুজ রঙে এবং ডিলেট হওয়া অংশ লাল রঙে হাইলাইট হয়ে পাশাপাশি প্রদর্শিত হবে।</li>
+              </ul>
+              <div class="manual-tip">
+                <strong>💡 গুরুত্বপূর্ণ টিপস:</strong> এটি একই সাথে ভিজ্যুয়াল (ডিজাইন) এবং টেক্সচুয়াল (শব্দ ও বাক্য) দুই ধরনের পরিবর্তনই নিখুঁতভাবে শনাক্ত করতে পারে।
+              </div>
+            </div>
+            
+            <!-- PDF Conversion Tab -->
+            <div id="tab-convert" class="manual-tab-content">
+              <h3>অফলাইন ডকুমেন্ট কনভার্সন (Offline Conversion)</h3>
+              <p>কোনো ইন্টারনেট সংযোগ বা থার্ড-পার্টি সার্ভার ছাড়াই শতভাগ নিরাপদ উপায়ে যেকোনো ফাইল ফরম্যাটে রূপান্তর করুন।</p>
+              <ul class="manual-steps">
+                <li><strong>ধাপ ১:</strong> অ্যাপে পিডিএফ ফাইলটি ড্র্যাগ করে আনুন।</li>
+                <li><strong>ধাপ ২:</strong> কোন ফরম্যাটে রূপান্তর করতে চান (Word, Excel, JPG, PPTX) তা সিলেক্ট করুন।</li>
+                <li><strong>ধাপ ৩:</strong> <strong>Convert Offline</strong> এ ক্লিক করুন। কয়েক মিলি সেকেন্ডে আপনার আউটপুট ফাইলটি রেডি হয়ে যাবে।</li>
+              </ul>
+              <div class="manual-tip">
+                <strong>💡 গুরুত্বপূর্ণ টিপস:</strong> অফলাইন কনভার্টারটি ফাইলের আসল ফন্ট, ইমেজ লেআউট এবং টেবিলের গ্রিড ফরম্যাট সম্পূর্ণ অক্ষুণ্ণ রাখে।
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1540,6 +1913,27 @@
           item.classList.remove('active');
         }
       });
+    }
+
+    // User Manual Tab Switching
+    function switchManualTab(event, tabId) {
+      // Get all tab content elements
+      const tabContents = document.querySelectorAll('.manual-tab-content');
+      tabContents.forEach(content => {
+        content.classList.remove('active');
+      });
+
+      // Get all tab buttons
+      const tabButtons = document.querySelectorAll('.manual-tab-btn');
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      // Show the selected tab content
+      document.getElementById(tabId).classList.add('active');
+
+      // Add active class to the clicked button
+      event.currentTarget.classList.add('active');
     }
   </script>
 </body>
