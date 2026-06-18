@@ -49,13 +49,16 @@
   }
   </script>
   
+  <!-- Preload Hero Mockup for LCP -->
+  <link rel="preload" href="assets/app_ui_mockup.webp" as="image" type="image/webp" />
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Gumroad Overlay (Opens purchase window directly on page) -->
-  <script src="https://gumroad.com/js/embed.js"></script>
+  <script src="https://gumroad.com/js/embed.js" defer></script>
 
   <style>
     :root {
@@ -1575,7 +1578,7 @@
     <div class="container nav-wrap">
       <a href="#" class="brand-logo">
         <div class="logo-icon">
-          <img src="assets/logo.png" alt="Antigravity PDF Logo">
+          <img src="assets/logo.png" alt="Antigravity PDF Logo" width="38" height="38">
         </div>
         <div class="brand-name">Antigravity<span>PDF</span></div>
       </a>
@@ -1642,7 +1645,7 @@
         <div class="mockup-wrapper">
           <div class="glow-border-active"></div>
           <div class="mockup-inner">
-            <img src="assets/app_ui_mockup.webp" alt="Antigravity PDF Pro Dashboard UI Mockup" />
+            <img src="assets/app_ui_mockup.webp" alt="Antigravity PDF Pro Dashboard UI Mockup" width="600" height="375" fetchpriority="high" />
           </div>
         </div>
       </div>
@@ -2499,6 +2502,9 @@
     let ci = 0;
     const trailColors = ['#00d4c8', '#a78bfa', '#f5a623', '#4ade80', '#f43f5e', '#38bdf8'];
     document.addEventListener('mousemove', (e) => {
+      // Disable on mobile/touch devices to optimize CPU usage
+      if (window.matchMedia('(pointer: coarse)').matches) return;
+      
       if (Math.random() > 0.35) return;
       const p = document.createElement('div');
       const s = 4 + Math.random() * 7;
