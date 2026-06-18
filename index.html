@@ -1586,7 +1586,7 @@
       <nav class="nav-links">
         <a href="#why-us">Why Offline</a>
         <a href="#features">Features</a>
-        <a href="#online-tools">Merge Online</a>
+        <a href="#online-tools" class="online-tools-link">Online Tools <span>Free</span></a>
         <a href="#manual">User Manual</a>
         <a href="#pricing">Pricing</a>
         <a href="#contact">Contact Support</a>
@@ -2265,33 +2265,551 @@
     }
   </style>
 
+    </div>
+  </section>
+
+  <!-- Online Tools Hub Section -->
+  <style>
+    .online-tools {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+      background: rgba(5, 13, 26, 0.98);
+    }
+    .tools-hub-container {
+      background: rgba(10, 22, 40, 0.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-premium);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      overflow: hidden;
+      min-height: 580px;
+    }
+    .tools-sidebar {
+      background: rgba(5, 13, 26, 0.6);
+      border-right: 1px solid var(--border);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .tools-sidebar-title {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0 12px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 12px;
+    }
+    .tool-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      background: none;
+      border: 1px solid transparent;
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: var(--text-dim);
+      font-family: var(--font-headings);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tool-tab-btn svg {
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .tool-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.03);
+      color: #fff;
+    }
+    .tool-tab-btn.active {
+      background: rgba(0, 212, 200, 0.15);
+      border-color: rgba(0, 212, 200, 0.25);
+      color: var(--accent-cyan);
+    }
+    .tool-tab-btn.active svg {
+      color: var(--accent-cyan);
+    }
+    .tool-tab-btn.premium-locked {
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tool-tab-btn.premium-locked span {
+      background: rgba(167, 139, 250, 0.15);
+      color: var(--primary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .tool-content-panel {
+      padding: 40px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .tool-header {
+      margin-bottom: 24px;
+    }
+    .tool-header h3 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .tool-header p {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+    }
+    .param-container {
+      margin-bottom: 24px;
+      display: none;
+    }
+    .param-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-dim);
+    }
+    .param-input {
+      width: 100%;
+      background: rgba(5, 13, 26, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .param-input:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(0, 212, 200, 0.2);
+      outline: none;
+    }
+    .usage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      align-self: flex-start;
+    }
+    .usage-badge span.count {
+      color: var(--accent-cyan);
+    }
+    .drop-zone {
+      border: 2px dashed rgba(0, 212, 200, 0.3);
+      border-radius: var(--radius);
+      padding: 40px 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: rgba(5, 13, 26, 0.4);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .drop-zone:hover, .drop-zone.dragover {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 212, 200, 0.05);
+      box-shadow: 0 0 20px rgba(0, 212, 200, 0.15);
+    }
+    .drop-zone-icon {
+      width: 56px;
+      height: 56px;
+      color: var(--accent-cyan);
+      margin: 0 auto 16px;
+      opacity: 0.8;
+    }
+    .drop-zone-text {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .drop-zone-subtext {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .file-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .file-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(5, 13, 26, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      transition: all 0.2s;
+    }
+    .file-item:hover {
+      border-color: rgba(0, 212, 200, 0.2);
+    }
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      overflow: hidden;
+    }
+    .file-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 400px;
+    }
+    .file-size {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .remove-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+    }
+    .remove-btn:hover {
+      color: var(--accent-pink);
+    }
+    .btn-process {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 8px 20px rgba(0, 212, 200, 0.25);
+    }
+    .btn-process:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(0, 212, 200, 0.4);
+    }
+    .btn-process:disabled {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .status-alert {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: none;
+    }
+    .status-alert.success {
+      background: rgba(74, 222, 128, 0.1);
+      color: #4ade80;
+      border: 1px solid rgba(74, 222, 128, 0.2);
+    }
+    .status-alert.error {
+      background: rgba(244, 63, 94, 0.1);
+      color: #f43f5e;
+      border: 1px solid rgba(244, 63, 94, 0.2);
+    }
+    .limit-overlay, .premium-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(5, 13, 26, 0.98);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      text-align: center;
+    }
+    .limit-box {
+      max-width: 500px;
+      text-align: center;
+    }
+    .limit-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .limit-box h3 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #fff, var(--text-dim));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .limit-box p {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .limit-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .btn-limit-download {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-limit-download:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .btn-limit-buy {
+      background: linear-gradient(135deg, var(--primary), var(--accent-blue));
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(167, 139, 250, 0.3);
+    }
+    .btn-limit-buy:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+    }
+    .btn-close-premium {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 0.88rem;
+      margin-top: 12px;
+      transition: color 0.2s;
+      display: block;
+      margin: 12px auto 0;
+    }
+    .btn-close-premium:hover {
+      color: #fff;
+    }
+    /* Highlight badge in navbar */
+    .nav-links a.online-tools-link {
+      background: rgba(0, 212, 200, 0.1);
+      border: 1px solid rgba(0, 212, 200, 0.3);
+      padding: 6px 12px;
+      border-radius: 8px;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-links a.online-tools-link::after {
+      display: none;
+    }
+    .nav-links a.online-tools-link:hover {
+      background: rgba(0, 212, 200, 0.2);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(0, 212, 200, 0.2);
+    }
+    .nav-links a.online-tools-link span {
+      background: var(--accent-orange);
+      color: #000;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 1px 4px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    @media (max-width: 768px) {
+      .tools-hub-container {
+        grid-template-columns: 1fr;
+      }
+      .tools-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 16px;
+      }
+      .tools-sidebar-title {
+        display: none;
+      }
+      .tool-tab-btn {
+        white-space: nowrap;
+        width: auto;
+      }
+      .tool-content-panel {
+        padding: 24px;
+      }
+    }
+  </style>
+
   <section id="online-tools" class="online-tools">
     <div class="container">
       <div class="section-header">
-        <h2>Try Online PDF Merger</h2>
-        <p>100% secure client-side tool. Your files are processed entirely in your browser and never leave your device.</p>
+        <h2>Free Online PDF Tools</h2>
+        <p>100% Private Client-Side Tools. How it works: Upload your document, select settings, and process. Files never leave your browser.</p>
       </div>
 
-      <div class="tool-container">
-        <div class="drop-zone" id="drop-zone">
-          <svg class="drop-zone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="17 8 12 3 7 8"></polyline>
-            <line x1="12" y1="3" x2="12" y2="15"></line>
-          </svg>
-          <div class="drop-zone-text">Drag & drop your PDF files here</div>
-          <div class="drop-zone-subtext">or click to browse from computer (Select multiple files)</div>
-          <input type="file" id="pdf-input" accept=".pdf" multiple style="display: none;">
+      <div class="tools-hub-container">
+        <!-- Sidebar Navigation -->
+        <div class="tools-sidebar">
+          <div class="tools-sidebar-title">Available Tools</div>
+          <button class="tool-tab-btn active" onclick="switchToolTab('merge')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            Merge PDFs
+          </button>
+          <button class="tool-tab-btn" onclick="switchToolTab('split')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18M3 14h18"/></svg>
+            Split PDF
+          </button>
+          <button class="tool-tab-btn" onclick="switchToolTab('delete')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+            Delete Pages
+          </button>
+          <button class="tool-tab-btn" onclick="switchToolTab('rotate')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            Rotate PDF
+          </button>
+          <button class="tool-tab-btn premium-locked" onclick="showPremiumPrompt('edit')">
+            <span style="display:flex; align-items:center; gap:8px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4z"></path></svg>
+              Edit PDF Text
+            </span>
+            <span>PRO</span>
+          </button>
+          <button class="tool-tab-btn premium-locked" onclick="showPremiumPrompt('convert')">
+            <span style="display:flex; align-items:center; gap:8px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              PDF to Word
+            </span>
+            <span>PRO</span>
+          </button>
         </div>
 
-        <div class="file-list" id="file-list"></div>
+        <!-- Content Panel -->
+        <div class="tool-content-panel">
+          <!-- Usage Count Badge -->
+          <div class="usage-badge">
+            Daily Free Actions Remaining: <span id="usage-count" class="count">3 of 3</span>
+          </div>
 
-        <button class="btn-merge" id="merge-btn" style="display: none;">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-          Merge PDFs
-        </button>
+          <!-- Tool Header details -->
+          <div class="tool-header" id="tool-header">
+            <h3 id="tool-title">Merge PDFs</h3>
+            <p id="tool-desc">Combine multiple PDF files into one clean document.</p>
+          </div>
 
-        <div class="status-alert" id="merge-status"></div>
+          <!-- Parameters Dynamic Inputs -->
+          <div id="split-param-container" class="param-container">
+            <label class="param-label" for="split-range">Enter Page Range to Extract:</label>
+            <input type="text" id="split-range" placeholder="e.g. 1-3, 5 (Keeps pages 1, 2, 3, and 5)" class="param-input">
+          </div>
+
+          <div id="delete-param-container" class="param-container">
+            <label class="param-label" for="delete-range">Enter Page Numbers to Delete:</label>
+            <input type="text" id="delete-range" placeholder="e.g. 2, 4 (Removes page 2 and page 4)" class="param-input">
+          </div>
+
+          <div id="rotate-param-container" class="param-container">
+            <label class="param-label" for="rotate-angle">Select Rotation Angle:</label>
+            <select id="rotate-angle" class="param-input">
+              <option value="90">Rotate 90° Clockwise</option>
+              <option value="180">Rotate 180°</option>
+              <option value="270">Rotate 270° Clockwise</option>
+            </select>
+          </div>
+
+          <!-- Upload Dropzone -->
+          <div class="drop-zone" id="drop-zone">
+            <svg class="drop-zone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <div class="drop-zone-text" id="drop-zone-title">Drag & drop your PDF files here</div>
+            <div class="drop-zone-subtext" id="drop-zone-subtitle">or click to browse from computer (Select multiple files)</div>
+            <input type="file" id="pdf-input" accept=".pdf" multiple style="display: none;">
+          </div>
+
+          <div class="file-list" id="file-list"></div>
+
+          <button class="btn-process" id="process-btn" style="display: none;">
+            Process File
+          </button>
+
+          <div class="status-alert" id="merge-status"></div>
+
+          <!-- Premium limit reached overlay overlay -->
+          <div id="limit-overlay" class="limit-overlay" style="display: none;">
+            <div class="limit-box">
+              <div class="limit-icon">🔒</div>
+              <h3>Daily Free Limit Reached!</h3>
+              <p>You have used all 3 free operations for today. To process unlimited PDF files offline with 100% privacy, zero wait times, and advanced AI features, download the Antigravity PDF Pro desktop client.</p>
+              <div class="limit-buttons">
+                <a href="https://github.com/shakibapon1234-maker/Antigravity-PDF-Pro-1/releases/download/v1.0.0/Antigravity.PDF.Pro.Setup.1.0.0.exe" class="btn-limit-download">Download Free Trial</a>
+                <a href="https://gumroad.com/l/antigravity-pdf-pro" class="btn-limit-buy">Buy Lifetime Pro — $9.99</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Locked Premium features overlay -->
+          <div id="premium-overlay" class="premium-overlay" style="display: none;">
+            <div class="limit-box">
+              <div class="limit-icon">💎</div>
+              <h3 id="premium-title">Premium Desktop Feature</h3>
+              <p id="premium-text">Advanced features like editing existing PDF text and OCR are reserved for the Antigravity PDF Pro desktop application to guarantee maximum privacy and speed.</p>
+              <div class="limit-buttons">
+                <a href="https://github.com/shakibapon1234-maker/Antigravity-PDF-Pro-1/releases/download/v1.0.0/Antigravity.PDF.Pro.Setup.1.0.0.exe" class="btn-limit-download">Download Free Trial</a>
+                <a href="https://gumroad.com/l/antigravity-pdf-pro" class="btn-limit-buy">Buy Lifetime Pro — $9.99</a>
+              </div>
+              <button class="btn-close-premium" onclick="closePremiumOverlay()">Back to Free Tools</button>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
@@ -2300,13 +2818,130 @@
   <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
   <script>
     (function() {
+      let activeTool = 'merge';
       let selectedFiles = [];
+      const maxDailyOperations = 3;
 
       const dropZone = document.getElementById('drop-zone');
       const fileInput = document.getElementById('pdf-input');
       const fileList = document.getElementById('file-list');
-      const mergeBtn = document.getElementById('merge-btn');
+      const processBtn = document.getElementById('process-btn');
       const mergeStatus = document.getElementById('merge-status');
+      const usageCountDisplay = document.getElementById('usage-count');
+      const limitOverlay = document.getElementById('limit-overlay');
+      const premiumOverlay = document.getElementById('premium-overlay');
+
+      const splitContainer = document.getElementById('split-param-container');
+      const deleteContainer = document.getElementById('delete-param-container');
+      const rotateContainer = document.getElementById('rotate-param-container');
+
+      // Initialize usage limits
+      const CURRENT_DATE = new Date().toDateString();
+      let usageData = JSON.parse(localStorage.getItem('online_pdf_usage') || '{}');
+
+      if (usageData.date !== CURRENT_DATE) {
+        usageData = { date: CURRENT_DATE, count: 0 };
+        localStorage.setItem('online_pdf_usage', JSON.stringify(usageData));
+      }
+
+      function updateUsageDisplay() {
+        const remaining = Math.max(0, maxDailyOperations - usageData.count);
+        usageCountDisplay.innerHTML = `${remaining} of ${maxDailyOperations}`;
+        if (remaining <= 0) {
+          limitOverlay.style.display = 'flex';
+        } else {
+          limitOverlay.style.display = 'none';
+        }
+      }
+
+      function checkAndIncrementLimit() {
+        if (usageData.count >= maxDailyOperations) {
+          limitOverlay.style.display = 'flex';
+          return false;
+        }
+        usageData.count++;
+        localStorage.setItem('online_pdf_usage', JSON.stringify(usageData));
+        updateUsageDisplay();
+        return true;
+      }
+
+      updateUsageDisplay();
+
+      // Tab selector function
+      window.switchToolTab = function(tool) {
+        activeTool = tool;
+        selectedFiles = [];
+        renderFiles();
+        mergeStatus.style.display = 'none';
+
+        // Update active class on buttons
+        const buttons = document.querySelectorAll('.tool-tab-btn');
+        buttons.forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${tool}'`)) {
+            btn.classList.add('active');
+          }
+        });
+
+        // Toggle Parameter Containers & Update Text
+        splitContainer.style.display = 'none';
+        deleteContainer.style.display = 'none';
+        rotateContainer.style.display = 'none';
+
+        const title = document.getElementById('tool-title');
+        const desc = document.getElementById('tool-desc');
+        const dropZoneTitle = document.getElementById('drop-zone-title');
+        const dropZoneSubtitle = document.getElementById('drop-zone-subtitle');
+
+        if (tool === 'merge') {
+          title.innerHTML = 'Merge PDFs';
+          desc.innerHTML = 'Combine multiple PDF files into one clean document.';
+          dropZoneTitle.innerHTML = 'Drag & drop your PDF files here';
+          dropZoneSubtitle.innerHTML = 'or click to browse from computer (Select multiple files)';
+          fileInput.multiple = true;
+        } else if (tool === 'split') {
+          title.innerHTML = 'Split PDF';
+          desc.innerHTML = 'Extract specific pages from your PDF file into a new document.';
+          dropZoneTitle.innerHTML = 'Drag & drop a PDF file here';
+          dropZoneSubtitle.innerHTML = 'or click to browse from computer (1 file only)';
+          splitContainer.style.display = 'block';
+          fileInput.multiple = false;
+        } else if (tool === 'delete') {
+          title.innerHTML = 'Delete Pages';
+          desc.innerHTML = 'Remove unwanted pages from your PDF document.';
+          dropZoneTitle.innerHTML = 'Drag & drop a PDF file here';
+          dropZoneSubtitle.innerHTML = 'or click to browse from computer (1 file only)';
+          deleteContainer.style.display = 'block';
+          fileInput.multiple = false;
+        } else if (tool === 'rotate') {
+          title.innerHTML = 'Rotate PDF';
+          desc.innerHTML = 'Rotate all pages in your PDF file by a specific angle.';
+          dropZoneTitle.innerHTML = 'Drag & drop a PDF file here';
+          dropZoneSubtitle.innerHTML = 'or click to browse from computer (1 file only)';
+          rotateContainer.style.display = 'block';
+          fileInput.multiple = false;
+        }
+      };
+
+      // Premium prompts
+      window.showPremiumPrompt = function(feature) {
+        const title = document.getElementById('premium-title');
+        const text = document.getElementById('premium-text');
+        
+        if (feature === 'edit') {
+          title.innerHTML = 'Edit PDF Text (Premium Feature)';
+          text.innerHTML = 'Directly editing text inside a PDF is a highly complex task. To protect your file privacy and provide a lightning-fast experience, this feature is reserved exclusively for the Antigravity PDF Pro desktop software.';
+        } else if (feature === 'convert') {
+          title.innerHTML = 'PDF to Word Converter (Premium Feature)';
+          text.innerHTML = 'Converting PDFs to editable Word, Excel, or PowerPoint files requires high-fidelity layout reconstruction. Get the Antigravity PDF Pro desktop client to convert documents with 100% accuracy offline.';
+        }
+        
+        premiumOverlay.style.display = 'flex';
+      };
+
+      window.closePremiumOverlay = function() {
+        premiumOverlay.style.display = 'none';
+      };
 
       // Trigger file input
       dropZone.addEventListener('click', () => fileInput.click());
@@ -2330,8 +2965,15 @@
       });
 
       function handleFiles(files) {
+        if (activeTool !== 'merge' && selectedFiles.length >= 1) {
+          alert('This tool only supports 1 PDF file at a time. Please remove the existing file first.');
+          return;
+        }
         for (let file of files) {
           if (file.type === 'application/pdf') {
+            if (activeTool !== 'merge' && selectedFiles.length >= 1) {
+              continue;
+            }
             selectedFiles.push(file);
           }
         }
@@ -2341,7 +2983,7 @@
       function renderFiles() {
         fileList.innerHTML = '';
         if (selectedFiles.length === 0) {
-          mergeBtn.style.display = 'none';
+          processBtn.style.display = 'none';
           return;
         }
         
@@ -2360,8 +3002,19 @@
           `;
           fileList.appendChild(item);
         });
+
+        // Set action button text
+        if (activeTool === 'merge') {
+          processBtn.innerHTML = 'Merge PDFs';
+        } else if (activeTool === 'split') {
+          processBtn.innerHTML = 'Split PDF & Download';
+        } else if (activeTool === 'delete') {
+          processBtn.innerHTML = 'Delete Pages & Download';
+        } else if (activeTool === 'rotate') {
+          processBtn.innerHTML = 'Rotate PDF & Download';
+        }
         
-        mergeBtn.style.display = 'inline-flex';
+        processBtn.style.display = 'inline-flex';
       }
 
       window.removeFile = function(index) {
@@ -2369,61 +3022,164 @@
         renderFiles();
       };
 
-      mergeBtn.addEventListener('click', async () => {
-        if (selectedFiles.length < 2) {
+      // Parsing page ranges helper
+      function parsePageRange(rangeStr, maxPages) {
+        const pages = [];
+        const parts = rangeStr.split(',');
+        for (let part of parts) {
+          part = part.trim();
+          if (part.includes('-')) {
+            const [start, end] = part.split('-').map(x => parseInt(x.trim()));
+            if (isNaN(start) || isNaN(end)) continue;
+            for (let i = start; i <= end; i++) {
+              if (i >= 1 && i <= maxPages) pages.push(i - 1);
+            }
+          } else {
+            const p = parseInt(part);
+            if (!isNaN(p) && p >= 1 && p <= maxPages) {
+              pages.push(p - 1);
+            }
+          }
+        }
+        return [...new Set(pages)];
+      }
+
+      processBtn.addEventListener('click', async () => {
+        if (selectedFiles.length === 0) return;
+        
+        if (activeTool === 'merge' && selectedFiles.length < 2) {
           alert('Please add at least 2 PDF files to merge.');
           return;
         }
-        
-        mergeBtn.disabled = true;
-        mergeBtn.innerHTML = 'Merging PDFs...';
+
+        // Limit validation
+        if (usageData.count >= maxDailyOperations) {
+          limitOverlay.style.display = 'flex';
+          return;
+        }
+
+        processBtn.disabled = true;
+        const originalText = processBtn.innerHTML;
+        processBtn.innerHTML = 'Processing PDF...';
         mergeStatus.style.display = 'none';
-        
+
         try {
           if (typeof PDFLib === 'undefined') {
-            throw new Error('PDF-Lib is still loading. Please try again in a second.');
+            throw new Error('PDF libraries are still loading. Please try again.');
           }
-          const { PDFDocument } = PDFLib;
-          const mergedPdf = await PDFDocument.create();
+          const { PDFDocument, degrees } = PDFLib;
+          let outputPdfBytes;
+          let outputName = 'processed_document.pdf';
+
+          if (activeTool === 'merge') {
+            const mergedPdf = await PDFDocument.create();
+            for (let file of selectedFiles) {
+              const arrayBuffer = await file.arrayBuffer();
+              const pdf = await PDFDocument.load(arrayBuffer);
+              const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+              copiedPages.forEach((page) => mergedPdf.addPage(page));
+            }
+            outputPdfBytes = await mergedPdf.save();
+            outputName = 'merged_document.pdf';
+          } 
           
-          for (let file of selectedFiles) {
+          else if (activeTool === 'split') {
+            const file = selectedFiles[0];
+            const rangeStr = document.getElementById('split-range').value.trim();
+            if (!rangeStr) {
+              throw new Error('Please enter page numbers or a range (e.g. 1-3).');
+            }
+            
             const arrayBuffer = await file.arrayBuffer();
-            const pdf = await PDFDocument.load(arrayBuffer);
-            const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
-            copiedPages.forEach((page) => mergedPdf.addPage(page));
+            const sourcePdf = await PDFDocument.load(arrayBuffer);
+            const maxPages = sourcePdf.getPageCount();
+            
+            const pagesToKeep = parsePageRange(rangeStr, maxPages);
+            if (pagesToKeep.length === 0) {
+              throw new Error('Invalid page range entered.');
+            }
+
+            const splitPdf = await PDFDocument.create();
+            const copiedPages = await splitPdf.copyPages(sourcePdf, pagesToKeep);
+            copiedPages.forEach((page) => splitPdf.addPage(page));
+            outputPdfBytes = await splitPdf.save();
+            outputName = 'split_' + file.name;
+          } 
+          
+          else if (activeTool === 'delete') {
+            const file = selectedFiles[0];
+            const rangeStr = document.getElementById('delete-range').value.trim();
+            if (!rangeStr) {
+              throw new Error('Please enter page numbers to delete.');
+            }
+            
+            const arrayBuffer = await file.arrayBuffer();
+            const pdfDoc = await PDFDocument.load(arrayBuffer);
+            const maxPages = pdfDoc.getPageCount();
+            
+            const pagesToDelete = parsePageRange(rangeStr, maxPages);
+            if (pagesToDelete.length === 0) {
+              throw new Error('Invalid page numbers entered.');
+            }
+            if (pagesToDelete.length >= maxPages) {
+              throw new Error('You cannot delete all pages of the document.');
+            }
+
+            // Remove starting from highest index to preserve smaller index locations
+            pagesToDelete.sort((a, b) => b - a);
+            pagesToDelete.forEach(idx => pdfDoc.removePage(idx));
+            
+            outputPdfBytes = await pdfDoc.save();
+            outputName = 'modified_' + file.name;
+          } 
+          
+          else if (activeTool === 'rotate') {
+            const file = selectedFiles[0];
+            const angleVal = parseInt(document.getElementById('rotate-angle').value);
+            
+            const arrayBuffer = await file.arrayBuffer();
+            const pdfDoc = await PDFDocument.load(arrayBuffer);
+            const pages = pdfDoc.getPages();
+            
+            pages.forEach(page => {
+              const currentRotation = page.getRotation().angle;
+              page.setRotation(degrees((currentRotation + angleVal) % 360));
+            });
+            
+            outputPdfBytes = await pdfDoc.save();
+            outputName = 'rotated_' + file.name;
           }
-          
-          const mergedPdfBytes = await mergedPdf.save();
-          
-          // Create blob and download
-          const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+
+          // Trigger download
+          const blob = new Blob([outputPdfBytes], { type: 'application/pdf' });
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
-          a.download = 'merged_document.pdf';
+          a.download = outputName;
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);
           URL.revokeObjectURL(url);
-          
+
+          // Update Limit count
+          checkAndIncrementLimit();
+
           mergeStatus.className = 'status-alert success';
-          mergeStatus.innerHTML = '✓ PDFs successfully merged and downloaded!';
+          mergeStatus.innerHTML = '✓ Operation successful! File downloaded.';
           mergeStatus.style.display = 'block';
-          
-          // Clear list
+
+          // Clear files array
           selectedFiles = [];
           renderFiles();
+
         } catch (error) {
           console.error(error);
           mergeStatus.className = 'status-alert error';
-          mergeStatus.innerHTML = '❌ An error occurred: ' + error.message;
+          mergeStatus.innerHTML = '❌ Error: ' + error.message;
           mergeStatus.style.display = 'block';
         } finally {
-          mergeBtn.disabled = false;
-          mergeBtn.innerHTML = `
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-            Merge PDFs
-          `;
+          processBtn.disabled = false;
+          processBtn.innerHTML = originalText;
         }
       });
     })();
