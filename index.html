@@ -1586,6 +1586,7 @@
       <nav class="nav-links">
         <a href="#why-us">Why Offline</a>
         <a href="#features">Features</a>
+        <a href="#online-tools">Merge Online</a>
         <a href="#manual">User Manual</a>
         <a href="#pricing">Pricing</a>
         <a href="#contact">Contact Support</a>
@@ -2114,6 +2115,319 @@
       </div>
     </div>
   </section>
+
+  <!-- Online Tools Section -->
+  <style>
+    .online-tools {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+      background: rgba(10, 22, 40, 0.3);
+    }
+    .tool-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(10, 22, 40, 0.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-premium);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      text-align: center;
+    }
+    .drop-zone {
+      border: 2px dashed rgba(0, 212, 200, 0.3);
+      border-radius: var(--radius);
+      padding: 40px 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: rgba(5, 13, 26, 0.4);
+      margin-bottom: 24px;
+    }
+    .drop-zone:hover, .drop-zone.dragover {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 212, 200, 0.05);
+      box-shadow: 0 0 20px rgba(0, 212, 200, 0.15);
+    }
+    .drop-zone-icon {
+      width: 64px;
+      height: 64px;
+      color: var(--accent-cyan);
+      margin: 0 auto 16px;
+      opacity: 0.8;
+    }
+    .drop-zone-text {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .drop-zone-subtext {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .file-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    .file-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(5, 13, 26, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      transition: all 0.2s;
+    }
+    .file-item:hover {
+      border-color: rgba(0, 212, 200, 0.2);
+    }
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      overflow: hidden;
+    }
+    .file-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 350px;
+    }
+    .file-size {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .remove-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+    }
+    .remove-btn:hover {
+      color: var(--accent-pink);
+    }
+    .btn-merge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 8px 20px rgba(0, 212, 200, 0.25);
+    }
+    .btn-merge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(0, 212, 200, 0.4);
+    }
+    .btn-merge:disabled {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .status-alert {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: none;
+    }
+    .status-alert.success {
+      background: rgba(74, 222, 128, 0.1);
+      color: #4ade80;
+      border: 1px solid rgba(74, 222, 128, 0.2);
+    }
+    .status-alert.error {
+      background: rgba(244, 63, 94, 0.1);
+      color: #f43f5e;
+      border: 1px solid rgba(244, 63, 94, 0.2);
+    }
+  </style>
+
+  <section id="online-tools" class="online-tools">
+    <div class="container">
+      <div class="section-header">
+        <h2>Try Online PDF Merger</h2>
+        <p>100% secure client-side tool. Your files are processed entirely in your browser and never leave your device.</p>
+      </div>
+
+      <div class="tool-container">
+        <div class="drop-zone" id="drop-zone">
+          <svg class="drop-zone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <div class="drop-zone-text">Drag & drop your PDF files here</div>
+          <div class="drop-zone-subtext">or click to browse from computer (Select multiple files)</div>
+          <input type="file" id="pdf-input" accept=".pdf" multiple style="display: none;">
+        </div>
+
+        <div class="file-list" id="file-list"></div>
+
+        <button class="btn-merge" id="merge-btn" style="display: none;">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          Merge PDFs
+        </button>
+
+        <div class="status-alert" id="merge-status"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PDF-Lib library CDN for client-side PDF manipulation -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script>
+    (function() {
+      let selectedFiles = [];
+
+      const dropZone = document.getElementById('drop-zone');
+      const fileInput = document.getElementById('pdf-input');
+      const fileList = document.getElementById('file-list');
+      const mergeBtn = document.getElementById('merge-btn');
+      const mergeStatus = document.getElementById('merge-status');
+
+      // Trigger file input
+      dropZone.addEventListener('click', () => fileInput.click());
+
+      // Drag & drop handlers
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+      });
+      dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('dragover');
+      });
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        handleFiles(e.dataTransfer.files);
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        handleFiles(e.target.files);
+      });
+
+      function handleFiles(files) {
+        for (let file of files) {
+          if (file.type === 'application/pdf') {
+            selectedFiles.push(file);
+          }
+        }
+        renderFiles();
+      }
+
+      function renderFiles() {
+        fileList.innerHTML = '';
+        if (selectedFiles.length === 0) {
+          mergeBtn.style.display = 'none';
+          return;
+        }
+        
+        selectedFiles.forEach((file, index) => {
+          const item = document.createElement('div');
+          item.className = 'file-item';
+          item.innerHTML = `
+            <div class="file-info">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              <span class="file-name">${file.name}</span>
+              <span class="file-size">(${(file.size / 1024 / 1024).toFixed(2)} MB)</span>
+            </div>
+            <button class="remove-btn" onclick="removeFile(${index})">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          `;
+          fileList.appendChild(item);
+        });
+        
+        mergeBtn.style.display = 'inline-flex';
+      }
+
+      window.removeFile = function(index) {
+        selectedFiles.splice(index, 1);
+        renderFiles();
+      };
+
+      mergeBtn.addEventListener('click', async () => {
+        if (selectedFiles.length < 2) {
+          alert('Please add at least 2 PDF files to merge.');
+          return;
+        }
+        
+        mergeBtn.disabled = true;
+        mergeBtn.innerHTML = 'Merging PDFs...';
+        mergeStatus.style.display = 'none';
+        
+        try {
+          if (typeof PDFLib === 'undefined') {
+            throw new Error('PDF-Lib is still loading. Please try again in a second.');
+          }
+          const { PDFDocument } = PDFLib;
+          const mergedPdf = await PDFDocument.create();
+          
+          for (let file of selectedFiles) {
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await PDFDocument.load(arrayBuffer);
+            const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+            copiedPages.forEach((page) => mergedPdf.addPage(page));
+          }
+          
+          const mergedPdfBytes = await mergedPdf.save();
+          
+          // Create blob and download
+          const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'merged_document.pdf';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          
+          mergeStatus.className = 'status-alert success';
+          mergeStatus.innerHTML = '✓ PDFs successfully merged and downloaded!';
+          mergeStatus.style.display = 'block';
+          
+          // Clear list
+          selectedFiles = [];
+          renderFiles();
+        } catch (error) {
+          console.error(error);
+          mergeStatus.className = 'status-alert error';
+          mergeStatus.innerHTML = '❌ An error occurred: ' + error.message;
+          mergeStatus.style.display = 'block';
+        } finally {
+          mergeBtn.disabled = false;
+          mergeBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            Merge PDFs
+          `;
+        }
+      });
+    })();
+  </script>
 
   <!-- Pricing Section -->
   <section id="pricing" class="pricing">
