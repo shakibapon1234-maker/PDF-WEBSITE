@@ -1907,9 +1907,9 @@
         <div class="video-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center;">
           <div class="video-frame-container" style="position: relative; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); background: #000; aspect-ratio: 16/9; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
             <!-- Responsive Video Embed Placeholder -->
-            <div class="video-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(10,22,40,0.9) 0%, rgba(5,13,26,0.98) 100%); cursor: pointer; transition: all 0.3s;" onclick="alert('আপনার টিউটোরিয়াল ভিডিওর YouTube/Vimeo embed কোডটি এখানে যুক্ত করুন।')">
+            <div class="video-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(10,22,40,0.9) 0%, rgba(5,13,26,0.98) 100%); cursor: pointer; transition: all 0.3s;" onclick="alert('আপনার টিউটোরিয়াল ভিডিওর YouTube/Vimeo embed কোডটি এখানে যুক্ত করুন।')" role="button" tabindex="0" aria-label="ভিডিও টিউটোরিয়াল গাইড দেখুন" onkeydown="if(event.key === 'Enter' || event.key === ' ') { alert('আপনার টিউটোরিয়াল ভিডিওর YouTube/Vimeo embed কোডটি এখানে যুক্ত করুন।'); event.preventDefault(); }">
               <div class="play-btn-glow" style="width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent-blue)); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 0 30px var(--primary-glow); margin-bottom: 16px; transition: transform 0.3s;">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" style="transform: translateX(2px);"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" style="transform: translateX(2px);" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
               </div>
               <span style="font-weight: 700; font-size: 1.1rem; color: #fff; margin-bottom: 6px;">ভিডিও টিউটোরিয়াল গাইড দেখুন</span>
               <span style="font-size: 0.88rem; color: var(--text-dim);">[ভিডিও লিঙ্ক যুক্ত করতে এই কোড এডিট করুন]</span>
@@ -2996,8 +2996,8 @@
               <span class="file-name">${file.name}</span>
               <span class="file-size">(${(file.size / 1024 / 1024).toFixed(2)} MB)</span>
             </div>
-            <button class="remove-btn" onclick="removeFile(${index})">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+             <button class="remove-btn" onclick="removeFile(${index})" aria-label="Remove file">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
           `;
           fileList.appendChild(item);
@@ -3307,50 +3307,50 @@
       </div>
       
       <div class="faq-grid">
-        <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-ans-1" onkeydown="if(event.key === 'Enter' || event.key === ' ') { toggleFaq(this); event.preventDefault(); }">
           <div class="faq-question">
             <h3>Is my data really safe? Does this work offline?</h3>
-            <div class="faq-toggle">
+            <div class="faq-toggle" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
           </div>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-ans-1">
             <p>Yes. Antigravity PDF Pro is built as a native Windows desktop client. All conversions (Word, Excel, Images), PDF compares, and OCR reading operations run entirely locally on your processor. We do not host any upload servers, meaning your financial reports and client data never leave your PC.</p>
           </div>
         </div>
 
-        <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-ans-2" onkeydown="if(event.key === 'Enter' || event.key === ' ') { toggleFaq(this); event.preventDefault(); }">
           <div class="faq-question">
             <h3>How does the lifetime license work?</h3>
-            <div class="faq-toggle">
+            <div class="faq-toggle" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
           </div>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-ans-2">
             <p>Unlike other PDF editors that charge monthly fees, Antigravity PDF Pro is a one-time purchase. Once you buy a license key through Gumroad, you activate the app once and own it forever. All minor and major updates inside this version are free for life.</p>
           </div>
         </div>
 
-        <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-ans-3" onkeydown="if(event.key === 'Enter' || event.key === ' ') { toggleFaq(this); event.preventDefault(); }">
           <div class="faq-question">
             <h3>What happens after I make the purchase on Gumroad?</h3>
-            <div class="faq-toggle">
+            <div class="faq-toggle" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
           </div>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-ans-3">
             <p>Upon completing the secure purchase, Gumroad will instantly email you a unique license key (in the format <code>AGP-XXXX-XXXX-XXXX</code>) along with the download link for the installer. Paste this key into the app's activation box on startup to unlock all premium features forever.</p>
           </div>
         </div>
 
-        <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-ans-4" onkeydown="if(event.key === 'Enter' || event.key === ' ') { toggleFaq(this); event.preventDefault(); }">
           <div class="faq-question">
             <h3>Can I transfer my license to a new computer?</h3>
-            <div class="faq-toggle">
+            <div class="faq-toggle" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
           </div>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-ans-4">
             <p>Yes, absolutely. If you buy a new computer, you can deactivate the license in the app's settings section, or contact our support team to reset your active device limit. The Lifetime Pro supports 1 active PC at a time, while the Office Pack supports 3 active PCs.</p>
           </div>
         </div>
@@ -3535,14 +3535,18 @@
 
     // FAQ Accordion Trigger
     function toggleFaq(element) {
-      // Toggle active class on clicked element
-      element.classList.toggle('active');
+      const isActive = element.classList.contains('active');
       
-      // Close other elements
+      // Toggle active class and aria-expanded on clicked element
+      element.classList.toggle('active');
+      element.setAttribute('aria-expanded', !isActive);
+      
+      // Close other elements and set aria-expanded to false
       const faqItems = document.querySelectorAll('.faq-item');
       faqItems.forEach(item => {
         if (item !== element) {
           item.classList.remove('active');
+          item.setAttribute('aria-expanded', 'false');
         }
       });
     }
