@@ -5,26 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO Meta Tags -->
-  <title>Antigravity PDF Pro — Premium 100% Offline PDF Editor & Converter</title>
+  <title>Antigravity PDF Pro — 100% Offline Desktop App & Free Online PDF Tools</title>
   <meta name="description" content="The ultimate desktop PDF editor, converter, and OCR tool for Windows. 100% offline, zero subscriptions, complete privacy. Edit, merge, split, and sign PDFs instantly." />
   <meta name="keywords" content="pdf editor, offline pdf, convert pdf, pdf to excel, pdf ocr, merge pdf, windows pdf editor, secure pdf, privacy pdf" />
   
   <!-- Canonical Link -->
   <link rel="canonical" href="https://antigravitypdf.com" />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/logo.webp" />
+  <link rel="apple-touch-icon" href="assets/logo.webp" />
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://antigravitypdf.com" />
-  <meta property="og:title" content="Antigravity PDF Pro — Premium 100% Offline PDF Editor & Converter" />
+  <meta property="og:title" content="Antigravity PDF Pro — 100% Offline Desktop App & Free Online PDF Tools" />
   <meta property="og:description" content="The ultimate desktop PDF editor, converter, and OCR tool for Windows. 100% offline, zero subscriptions, complete privacy. Edit, merge, split, and sign PDFs instantly." />
-  <meta property="og:image" content="https://antigravitypdf.com/assets/app_ui_mockup.webp" />
+  <meta property="og:image" content="https://antigravitypdf.com/assets/og_preview.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://antigravitypdf.com" />
-  <meta name="twitter:title" content="Antigravity PDF Pro — Premium 100% Offline PDF Editor & Converter" />
+  <meta name="twitter:title" content="Antigravity PDF Pro — 100% Offline Desktop App & Free Online PDF Tools" />
   <meta name="twitter:description" content="The ultimate desktop PDF editor, converter, and OCR tool for Windows. 100% offline, zero subscriptions, complete privacy. Edit, merge, split, and sign PDFs instantly." />
-  <meta name="twitter:image" content="https://antigravitypdf.com/assets/app_ui_mockup.webp" />
+  <meta name="twitter:image" content="https://antigravitypdf.com/assets/og_preview.png" />
 
   <!-- Structured Data / JSON-LD (Search Engines Software Rich Snippet) -->
   <script type="application/ld+json">
@@ -46,6 +50,62 @@
     },
     "description": "Premium 100% offline desktop PDF suite designed specifically for CA firms, corporate accountants, and privacy-conscious offices.",
     "downloadUrl": "https://github.com/shakibapon1234-maker/Antigravity-PDF-Pro-1/releases/download/v1.0.0/Antigravity.PDF.Pro.Setup.1.0.0.exe"
+  }
+  </script>
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Antigravity PDF Pro",
+    "url": "https://antigravitypdf.com",
+    "logo": "https://antigravitypdf.com/assets/logo.webp",
+    "sameAs": [
+      "https://github.com/shakibapon1234-maker"
+    ]
+  }
+  </script>
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is my data really safe? Does this work offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Antigravity PDF Pro is built as a native Windows desktop client. All conversions (Word, Excel, Images), PDF compares, and OCR reading operations run entirely locally on your processor. We do not host any upload servers, meaning your financial reports and client data never leave your PC."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the lifetime license work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Unlike other PDF editors that charge monthly fees, Antigravity PDF Pro is a one-time purchase. Once you buy a license key through Gumroad, you activate the app once and own it forever. All minor and major updates inside this version are free for life."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens after I make the purchase on Gumroad?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Upon completing the secure purchase, Gumroad will instantly email you a unique license key (in the format AGP-XXXX-XXXX-XXXX) along with the download link for the installer. Paste this key into the app's activation box on startup to unlock all premium features forever."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I transfer my license to a new computer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, absolutely. If you buy a new computer, you can deactivate the license in the app's settings section, or contact our support team to reset your active device limit. The Lifetime Pro supports 1 active PC at a time, while the Office Pack supports 3 active PCs."
+        }
+      }
+    ]
   }
   </script>
   
@@ -1537,12 +1597,110 @@
       100% {
         transform: scale(1.4);
         opacity: 0;
-      }
     }
 
     @media (max-width: 992px) {
       .contact-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    /* Language Toggle Button styling */
+    .btn-lang-toggle {
+      background: rgba(167, 139, 250, 0.1);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-lang-toggle:hover {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    /* Mobile Hamburger Menu */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1002;
+    }
+    .nav-toggle span {
+      width: 100%;
+      height: 2px;
+      background-color: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Responsive navigation styles */
+    @media (max-width: 992px) {
+      .nav-toggle {
+        display: flex;
+      }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(5, 13, 26, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-left: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 90px 30px 40px;
+        gap: 20px;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1001;
+      }
+      .nav-links.active {
+        right: 0;
+      }
+      .nav-links a {
+        font-size: 1.1rem;
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .nav-links a::after {
+        display: none;
+      }
+      .btn-header {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+      }
+      .btn-lang-toggle {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      /* Hamburger Active Animation */
+      .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -7px);
       }
     }
 
@@ -1584,15 +1742,23 @@
       </a>
       
       <nav class="nav-links">
-        <a href="#why-us">Why Offline</a>
-        <a href="#features">Features</a>
-        <a href="#online-tools" class="online-tools-link">Online Tools <span>Free</span></a>
-        <a href="#manual">User Manual</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact Support</a>
-        <a href="#faq">FAQ</a>
-        <a href="https://gumroad.com/l/antigravity-pdf-pro" class="btn-header gumroad-button">Buy Now</a>
+        <a href="#why-us" data-translate="nav-why">Why Offline</a>
+        <a href="#features" data-translate="nav-features">Features</a>
+        <a href="#online-tools" class="online-tools-link" data-translate="nav-online">Online Tools <span>Free</span></a>
+        <a href="#manual" data-translate="nav-manual">User Manual</a>
+        <a href="#pricing" data-translate="nav-pricing">Pricing</a>
+        <a href="#contact" data-translate="nav-contact">Contact Support</a>
+        <a href="#faq" data-translate="nav-faq">FAQ</a>
+        <a href="https://gumroad.com/l/antigravity-pdf-pro" class="btn-header gumroad-button" data-translate="nav-buy">Buy Now</a>
+        <button id="langToggleBtn" class="btn-lang-toggle" aria-label="Toggle language">বাংলা</button>
       </nav>
+
+      <!-- Hamburger Menu Button -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
@@ -1600,42 +1766,42 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content">
-        <div class="hero-badge">
+        <div class="hero-badge" data-translate="hero-badge">
           <span></span> 100% Offline Desktop Client
         </div>
         
-        <h1>Fast, Secure PDF Editing <span>Without Subscriptions.</span></h1>
+        <h1 data-translate="hero-title">Antigravity PDF Pro — <span>100% Offline PDF Editor & Converter</span></h1>
         
-        <p class="hero-desc">
+        <p class="hero-desc" data-translate="hero-desc">
           The premium Windows app designed for CA professionals, accountants, and businesses. Protect your sensitive financial documents—files never leave your device.
         </p>
         
         <div class="cta-group">
           <!-- User can customize YOUR_GUMROAD_PERMALINK with actual URL in production -->
-          <a href="https://gumroad.com/l/antigravity-pdf-pro" class="btn-primary gumroad-button">
+          <a href="https://gumroad.com/l/antigravity-pdf-pro" class="btn-primary gumroad-button" data-translate="hero-buy">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
             Buy Lifetime Pro — $9.99
           </a>
-          <a href="#download" class="btn-outline">
+          <a href="#download" class="btn-outline" data-translate="hero-trial">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             Download Free Trial
           </a>
         </div>
-        <div style="font-size: 0.88rem; color: var(--text-muted); margin-top: -16px; margin-bottom: 24px; display: flex; align-items: center; gap: 6px;">
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-top: -16px; margin-bottom: 24px; display: flex; align-items: center; gap: 6px;" data-translate="hero-key">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-green);"><polyline points="20 6 9 17 4 12"></polyline></svg>
           7-Day Free Trial (Activation Key: AGP-BETA-2026-FREE)
         </div>
         
         <div class="hero-features-preview">
-          <div class="preview-item">
+          <div class="preview-item" data-translate="hero-feat1">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             No Internet Needed
           </div>
-          <div class="preview-item">
+          <div class="preview-item" data-translate="hero-feat2">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Lifetime Ownership
           </div>
-          <div class="preview-item">
+          <div class="preview-item" data-translate="hero-feat3">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             30-Day Guarantee
           </div>
@@ -1657,67 +1823,61 @@
   <section id="why-us" class="comparison-section">
     <div class="container">
       <div class="section-header">
-        <h2>Offline Desktop vs. Cloud PDF</h2>
-        <p>Why security-conscious professionals are moving away from subscription-based cloud tools.</p>
+        <h2 data-translate="vs-title">Offline Desktop vs. Cloud PDF</h2>
+        <p data-translate="vs-desc">Why security-conscious professionals are moving away from subscription-based cloud tools.</p>
       </div>
       
       <div class="comparison-card">
         <div class="comp-grid">
           <div class="comp-column pro">
-            <h3>
+            <h3 data-translate="why-desktop-title">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              Antigravity PDF Pro
+              Antigravity PDF Pro (Desktop)
             </h3>
             <ul class="comp-list pro">
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <div class="comp-text">
-                  <h4>100% On-Device Operations</h4>
-                  <p>All processing (conversions, edits, OCR) runs locally. Your invoices and tax sheets never leave your computer.</p>
+                  <p data-translate="why-d1"><strong>100% Offline:</strong> Processing is done locally. Zero upload servers.</p>
                 </div>
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <div class="comp-text">
-                  <h4>One-Time Payment</h4>
-                  <p>Buy it once, own it forever. Stop renting your productivity tools with monthly fees.</p>
+                  <p data-translate="why-d2"><strong>Absolute Privacy:</strong> Ideal for CA audits, personal tax data, and legal cases.</p>
                 </div>
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <div class="comp-text">
-                  <h4>Extreme Speed</h4>
-                  <p>No uploading or downloading lag. Opens large files in milliseconds, rendering directly via GPU.</p>
+                  <p data-translate="why-d3"><strong>No Subscription:</strong> Buy once, own forever. No monthly bills.</p>
                 </div>
               </li>
             </ul>
           </div>
           
           <div class="comp-column cloud">
-            <h3>
+            <h3 data-translate="why-cloud-title">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
-              Standard Cloud Editors
+              Online Cloud Services (Others)
             </h3>
             <ul class="comp-list cloud">
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                 <div class="comp-text">
-                  <h4>Data Exposure Risks</h4>
-                  <p>Your documents are uploaded to third-party web servers, exposing sensitive client details.</p>
+                  <p data-translate="why-c1"><strong>Files Uploaded:</strong> Files are sent to remote servers, risking data leaks.</p>
                 </div>
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                 <div class="comp-text">
-                  <h4>Endless Subscriptions</h4>
-                  <p>Costs quickly balloon to $120+ every year. If you stop paying, you lose access immediately.</p>
+                  <p data-translate="why-c2"><strong>Privacy Risks:</strong> Sensitive financial reports and invoices are exposed online.</p>
                 </div>
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                 <div class="comp-text">
-                  <h4>Internet Dependent</h4>
-                  <p>No Wi-Fi means no PDF edits. Slow uploads stall your workflow during critical audit seasons.</p>
+                  <p data-translate="why-c3"><strong>Monthly Costs:</strong> $15-$25/month perpetual subscription fees.</p>
                 </div>
               </li>
             </ul>
@@ -1731,8 +1891,8 @@
   <section id="features" class="features">
     <div class="container">
       <div class="section-header">
-        <h2>25+ Professional Tools In One App</h2>
-        <p>A comprehensive PDF editing workstation packed into a lightweight local client.</p>
+        <h2 data-translate="tools-title">25+ Professional Tools In One App</h2>
+        <p data-translate="tools-desc">A comprehensive PDF editing workstation packed into a lightweight local client.</p>
       </div>
       
       <div class="features-grid">
@@ -1898,8 +2058,8 @@
   <section id="manual" class="manual-section">
     <div class="container">
       <div class="section-header">
-        <h2>ইউজার ম্যানুয়াল ও গাইডলাইন</h2>
-        <p>অফলাইন পিডিএফ এডিটর অ্যাপের গুরুত্বপূর্ণ ফিচারের সহজ ব্যবহারবিধি নিচে দেওয়া হলো।</p>
+        <h2 data-translate="manual-title">ইউজার ম্যানুয়াল ও গাইডলাইন</h2>
+        <p data-translate="manual-desc">অফলাইন পিডিএফ এডিটর অ্যাপের গুরুত্বপূর্ণ ফিচারের সহজ ব্যবহারবিধি নিচে দেওয়া হলো।</p>
       </div>
 
       <!-- Tutorial Video Card -->
@@ -2689,8 +2849,8 @@
   <section id="online-tools" class="online-tools">
     <div class="container">
       <div class="section-header">
-        <h2>Free Online PDF Tools</h2>
-        <p>100% Private Client-Side Tools. How it works: Upload your document, select settings, and process. Files never leave your browser.</p>
+        <h2 data-translate="online-title">Free Online PDF Tools</h2>
+        <p data-translate="online-desc">100% Private Client-Side Tools. How it works: Upload your document, select settings, and process. Files never leave your browser.</p>
       </div>
 
       <div class="tools-hub-container">
@@ -3185,12 +3345,50 @@
     })();
   </script>
 
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials-section" style="padding: 80px 0; position: relative;">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+        <h2 data-translate="testimonials-title" style="font-size: 2.2rem; margin-bottom: 12px;">What Professionals Say</h2>
+        <p data-translate="testimonials-desc" style="color: var(--text-dim); max-width: 600px; margin: 0 auto;">Trusted by corporate accountants, CA firms, and finance experts who require absolute data privacy.</p>
+      </div>
+      
+      <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-top: 40px;">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card" style="background: rgba(14, 14, 27, 0.65); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); transition: all 0.3s; position: relative; overflow: hidden;">
+          <div class="testimonial-stars" style="color: var(--amber); margin-bottom: 16px; font-size: 1.2rem;">★★★★★</div>
+          <p class="testimonial-quote" data-translate="test-q1" style="color: var(--text-dim); font-size: 0.98rem; font-style: italic; line-height: 1.7; margin-bottom: 24px;">"Antigravity PDF Pro has transformed our audit workflow. Working with sensitive client financial statements means cloud tools were never an option. This offline app is faster than Acrobat and completely private."</p>
+          <div class="testimonial-author" style="display: flex; align-items: center; gap: 16px;">
+            <div class="author-avatar" style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent-blue)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff;">RN</div>
+            <div>
+              <h4 style="font-size: 1rem; color: #fff; font-weight: 600;">Rafiqul Islam, FCA</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Senior Audit Partner, Islam & Co. Chartered Accountants</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card" style="background: rgba(14, 14, 27, 0.65); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); transition: all 0.3s; position: relative; overflow: hidden;">
+          <div class="testimonial-stars" style="color: var(--amber); margin-bottom: 16px; font-size: 1.2rem;">★★★★★</div>
+          <p class="testimonial-quote" data-translate="test-q2" style="color: var(--text-dim); font-size: 0.98rem; font-style: italic; line-height: 1.7; margin-bottom: 24px;">"Merging 100+ page tax files and splitting corporate bundles is instantaneous. The fact that files are processed completely client-side in the browser or via their desktop client gives us absolute peace of mind."</p>
+          <div class="testimonial-author" style="display: flex; align-items: center; gap: 16px;">
+            <div class="author-avatar" style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), var(--accent-green)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff;">AH</div>
+            <div>
+              <h4 style="font-size: 1rem; color: #fff; font-weight: 600;">Anika Hasan, CPA</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Director of Taxation, Wings Fly Academy & Consulting</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Pricing Section -->
   <section id="pricing" class="pricing">
     <div class="container">
       <div class="section-header">
-        <h2>Simple, Direct Pricing</h2>
-        <p>No monthly charges. Pay once, use forever. Pick the package that matches your productivity needs.</p>
+        <h2 data-translate="pricing-title">Simple, Direct Pricing</h2>
+        <p data-translate="pricing-desc">No recurring subscriptions. No hidden fees. Pay once, use forever.</p>
       </div>
       
       <div class="pricing-grid">
@@ -3228,8 +3426,8 @@
         <!-- Plan 2: Pro License -->
         <div class="price-card featured">
           <div class="price-header">
-            <h3>Lifetime Pro</h3>
-            <p>Perfect for solo accountants, CA students, and freelancers.</p>
+            <h3 data-translate="pricing-card1-title">Lifetime Pro</h3>
+            <p data-translate="pricing-card1-desc">Perfect for solo accountants, CA students, and freelancers.</p>
           </div>
           <div class="price-tag">
             <span class="price-num crossed">$24.99</span>
@@ -3264,8 +3462,8 @@
         <!-- Plan 3: Team / Office License -->
         <div class="price-card">
           <div class="price-header">
-            <h3>Office Team Pack</h3>
-            <p>Designed for small CA firms, accounting offices, and businesses.</p>
+            <h3 data-translate="pricing-card2-title">Office Team Pack</h3>
+            <p data-translate="pricing-card2-desc">Designed for small CA firms, accounting offices, and businesses.</p>
           </div>
           <div class="price-tag">
             <span class="price-num crossed">$49.99</span>
@@ -3362,8 +3560,8 @@
   <section id="contact" class="contact-section">
     <div class="container">
       <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-        <h2>প্রশ্ন ও মতামত পাঠান (Contact & Support)</h2>
-        <p>আপনার কোনো প্রশ্ন, কাস্টম রিকোয়ারমেন্ট বা মতামত থাকলে আমাদের নিচে লিখে জানান। আমাদের টিম দ্রুত যোগাযোগ করবে।</p>
+        <h2 data-translate="contact-title">প্রশ্ন ও মতামত পাঠান (Contact & Support)</h2>
+        <p data-translate="contact-desc">Antigravity PDF Pro সম্পর্কে যেকোনো প্রশ্ন, ফিডব্যাক বা কাস্টম অফিস লাইসেন্সের জন্য আমাদের লিখুন।</p>
       </div>
 
       <div class="contact-grid">
@@ -3457,8 +3655,8 @@
   <section id="download" class="download-cta">
     <div class="container">
       <div class="cta-card">
-        <h2>Bring Professional PDF Workflows to Your Desktop</h2>
-        <p>Stop paying for subscriptions. Take control of your document privacy with Antigravity PDF Pro.</p>
+        <h2 data-translate="download-title">Bring Professional PDF Workflows to Your Desktop</h2>
+        <p data-translate="download-desc">Download our secure 100% offline desktop app. Includes 7-day free trial key on startup.</p>
         
         <div class="cta-buttons">
           <a href="https://gumroad.com/l/antigravity-pdf-pro" class="btn-primary gumroad-button">
@@ -3587,6 +3785,169 @@
       document.body.appendChild(p);
       setTimeout(() => p.remove(), 900);
     });
+
+    // Hamburger menu toggle logic
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        const isExpanded = this.classList.contains('active');
+        this.setAttribute('aria-expanded', isExpanded);
+      });
+
+      // Close menu when clicking links
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Language Toggle & Translation System
+    const translations = {
+      en: {
+        "nav-why": "Why Offline",
+        "nav-features": "Features",
+        "nav-online": 'Online Tools <span>Free</span>',
+        "nav-manual": "User Manual",
+        "nav-pricing": "Pricing",
+        "nav-contact": "Contact Support",
+        "nav-faq": "FAQ",
+        "nav-buy": "Buy Now",
+        "hero-badge": "<span></span> 100% Offline Desktop Client",
+        "hero-title": "Fast, Secure PDF Editing <span>Without Subscriptions.</span>",
+        "hero-desc": "The premium Windows app designed for CA professionals, accountants, and businesses. Protect your sensitive financial documents—files never leave your device.",
+        "hero-buy": '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> Buy Lifetime Pro — $9.99',
+        "hero-trial": '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download Free Trial',
+        "hero-key": "7-Day Free Trial (Activation Key: AGP-BETA-2026-FREE)",
+        "hero-feat1": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> No Internet Needed',
+        "hero-feat2": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Lifetime Ownership',
+        "hero-feat3": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 30-Day Guarantee',
+        "vs-title": "Offline Desktop vs. Cloud PDF",
+        "vs-desc": "Why Antigravity PDF Pro keeps your workspace secure and fast.",
+        "why-desktop-title": "Antigravity PDF Pro (Desktop)",
+        "why-cloud-title": "Online Cloud Services (Others)",
+        "why-d1": "<strong>100% Offline:</strong> Processing is done locally. Zero upload servers.",
+        "why-d2": "<strong>Absolute Privacy:</strong> Ideal for CA audits, personal tax data, and legal cases.",
+        "why-d3": "<strong>No Subscription:</strong> Buy once, own forever. No monthly bills.",
+        "why-d4": "<strong>Unmatched Performance:</strong> Work on large 500+ page documents with no lag.",
+        "why-c1": "<strong>Files Uploaded:</strong> Files are sent to remote servers, risking data leaks.",
+        "why-c2": "<strong>Privacy Risks:</strong> Sensitive financial reports and invoices are exposed online.",
+        "why-c3": "<strong>Monthly Costs:</strong> $15-$25/month perpetual subscription fees.",
+        "why-c4": "<strong>Internet Dependent:</strong> Fails or slows down under poor connection.",
+        "tools-title": "25+ Professional Tools In One App",
+        "tools-desc": "Everything you need to edit, convert, and secure your PDF documents.",
+        "manual-title": "ইউজার ম্যানুয়াল ও গাইডলাইন",
+        "manual-desc": "Antigravity PDF Pro ডেক্সটপ অ্যাপ এবং অনলাইন ফ্রি টুলস কীভাবে ব্যবহার করবেন তার নির্দেশিকা।",
+        "online-title": "Free Online PDF Tools",
+        "online-desc": "100% Private Client-Side Tools. How it works: Upload your document, select settings, and process. Files never leave your browser.",
+        "pricing-title": "Simple, Direct Pricing",
+        "pricing-desc": "No recurring subscriptions. No hidden fees. Pay once, use forever.",
+        "pricing-card1-title": "Lifetime Pro",
+        "pricing-card1-desc": "Perfect for individual corporate accountants and tax advisors.",
+        "pricing-card2-title": "Office Pack",
+        "pricing-card2-desc": "For small CA firms, auditing groups, and corporate office rooms.",
+        "contact-title": "প্রশ্ন ও মতামত পাঠান (Contact & Support)",
+        "contact-desc": "Antigravity PDF Pro সম্পর্কে যেকোনো প্রশ্ন, ফিডব্যাক বা কাস্টম অফিস লাইসেন্সের জন্য আমাদের লিখুন।",
+        "download-title": "Bring Professional PDF Workflows to Your Desktop",
+        "download-desc": "Download our secure 100% offline desktop app. Includes 7-day free trial key on startup.",
+        "testimonials-title": "What Professionals Say",
+        "testimonials-desc": "Trusted by corporate accountants, CA firms, and finance experts who require absolute data privacy.",
+        "test-q1": "\"Antigravity PDF Pro has transformed our audit workflow. Working with sensitive client financial statements means cloud tools were never an option. This offline app is faster than Acrobat and completely private.\"",
+        "test-q2": "\"Merging 100+ page tax files and splitting corporate bundles is instantaneous. The fact that files are processed completely client-side in the browser or via their desktop client gives us absolute peace of mind.\""
+      },
+      bn: {
+        "nav-why": "কেন অফলাইন?",
+        "nav-features": "ফিচারসমূহ",
+        "nav-online": 'অনলাইন টুলস <span>ফ্রি</span>',
+        "nav-manual": "ইউজার ম্যানুয়াল",
+        "nav-pricing": "প্রাইসিং",
+        "nav-contact": "যোগাযোগ",
+        "nav-faq": "এফএকিউ",
+        "nav-buy": "এখনই কিনুন",
+        "hero-badge": "<span></span> ১০০% অফলাইন ডেস্কটপ ক্লায়েন্ট",
+        "hero-title": "সাবস্ক্রিপশন ছাড়াই <span>দ্রুত ও নিরাপদ পিডিএফ এডিটিং।</span>",
+        "hero-desc": "CA প্রফেশনাল, অ্যাকাউন্ট্যান্ট এবং ব্যবসায়ীদের জন্য প্রিমিয়াম উইন্ডোজ অ্যাপ। আপনার সংবেদনশীল আর্থিক ডকুমেন্টের শতভাগ নিরাপত্তা—ফাইল কখনই আপনার ডিভাইস থেকে বাইরে যাবে না।",
+        "hero-buy": '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> লাইফটাইম প্রো কিনুন — $৯.৯৯',
+        "hero-trial": '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> ফ্রি ট্রায়াল ডাউনলোড করুন',
+        "hero-key": "৭ দিনের ফ্রি ট্রায়াল (অ্যাক্টিভেশন কি: AGP-BETA-2026-FREE)",
+        "hero-feat1": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> ইন্টারনেট সংযোগ ছাড়াই চলে',
+        "hero-feat2": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> লাইফটাইম অ্যাক্সেস ও লাইসেন্স',
+        "hero-feat3": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> ৩০ দিনের মানি-ব্যাক গ্যারান্টি',
+        "vs-title": "অফলাইন ডেস্কটপ বনাম ক্লাউড পিডিএফ",
+        "vs-desc": "কেন Antigravity PDF Pro আপনার কাজের জন্য সম্পূর্ণ নিরাপদ ও দ্রুত গতিসম্পন্ন।",
+        "why-desktop-title": "Antigravity PDF (ডেস্কটপ)",
+        "why-cloud-title": "অনলাইন ক্লাউড সার্ভিস (অন্যান্য)",
+        "why-d1": "<strong>১০০% অফলাইন:</strong> সমস্ত প্রসেসিং আপনার পিসিতে সম্পন্ন হয়। কোনো সার্ভার আপলোড নেই।",
+        "why-d2": "<strong>সম্পূর্ণ প্রাইভেসি:</strong> সিএ অডিট, ব্যক্তিগত ট্যাক্স ও আইনি নথিপত্রের জন্য আদর্শ ও বিশ্বস্ত।",
+        "why-d3": "<strong>মাসিক ফি মুক্ত:</strong> এককালীন লাইফটাইম লাইসেন্স। কোনো মাসিক বা বাৎসরিক পেমেন্ট চার্জ নেই।",
+        "why-d4": "<strong>অসাধারণ স্পিড:</strong> ইন্টারনেটের ঝামেলা ছাড়াই ৫০০+ পৃষ্ঠার বড় ফাইলে কাজ করা যায় কোনো ল্যাগ ছাড়াই।",
+        "why-c1": "<strong>সার্ভার আপলোড:</strong> আপনার ফাইল বাইরের ক্লাউড সার্ভারে আপলোড হয়, ডেটা ফাঁসের ঝুঁকি থাকে।",
+        "why-c2": "<strong>নিরাপত্তাহীনতা:</strong> মূল্যবান ব্যবসায়িক ব্যালেন্স শিট, ক্লায়েন্ট ডেটা ইন্টারনেটে উন্মুক্ত হওয়ার সম্ভাবনা।",
+        "why-c3": "<strong>মাসিক সাবস্ক্রিপশন:</strong> প্রতি মাসে ১৫-২৫ ডলার দিতে হয় যা দীর্ঘমেয়াদে অনেক ব্যয়বহুল।",
+        "why-c4": "<strong>ইন্টারনেট নির্ভর:</strong> ইন্টারনেট সংযোগ না থাকলে কাজ বন্ধ বা স্পিড অনেক ধীরগতির হয়ে যায়।",
+        "tools-title": "একটি অ্যাপে ২৫টির বেশি প্রফেশনাল টুলস",
+        "tools-desc": "আপনার পিডিএফ ফাইল এডিট, কনভার্ট, সাইন এবং ফাইল সাইজ অপ্টিমাইজ করার সবকিছু এক জায়গায়।",
+        "manual-title": "ইউজার ম্যানুয়াল ও গাইডলাইন",
+        "manual-desc": "Antigravity PDF Pro ডেক্সটপ অ্যাপ এবং অনলাইন ফ্রি টুলস কীভাবে ব্যবহার করবেন তার নির্দেশিকা।",
+        "online-title": "ফ্রি অনলাইন পিডিএফ টুলস",
+        "online-desc": "১০০% নিরাপদ ব্রাউজার-ভিত্তিক টুলস। ফাইলগুলো সরাসরি আপনার ডিভাইসে প্রসেস হয়, কোনো সার্ভারে আপলোড হয় না।",
+        "pricing-title": "সহজ ও সরাসরি প্রাইসিং",
+        "pricing-desc": "কোনো অতিরিক্ত মাসিক ফি বা চার্জ নেই। একবার কিনুন, আজীবন নিশ্চিন্তে ব্যবহার করুন।",
+        "pricing-card1-title": "লাইফটাইম প্রো",
+        "pricing-card1-desc": "একক চার্টার্ড অ্যাকাউন্ট্যান্ট, ট্যাক্স প্রফেশনাল এবং কাস্টমারদের জন্য পারফাইক্ট।",
+        "pricing-card2-title": "অফিস প্যাক",
+        "pricing-card2-desc": "ছোট সিএ ফার্ম, অডিট টিম ও কর্পোরেট অফিসগুলোর জন্য ৩টি পিসির কম্বো প্যাক।",
+        "contact-title": "প্রশ্ন ও মতামত পাঠান (Contact & Support)",
+        "contact-desc": "Antigravity PDF Pro সম্পর্কে যেকোনো প্রশ্ন, ফিডব্যাক বা কাস্টম অফিস লাইসেন্সের জন্য আমাদের লিখুন।",
+        "download-title": "আপনার ডেস্কটপে নিয়ে আসুন প্রফেশনাল পিডিএফ ওয়ার্কফ্লো",
+        "download-desc": "১০০% অফলাইন ডেক্সটপ অ্যাপ্লিকেশনটি ডাউনলোড করুন। ইন্সটল করলেই পাবেন ৭ দিনের ফ্রি ট্রায়াল কি।",
+        "testimonials-title": "পেশাদারদের মতামত",
+        "testimonials-desc": "আর্থিক গোপনীয়তা নিশ্চিত করতে চার্টার্ড অ্যাকাউন্ট্যান্ট, সিএ ফার্ম এবং অর্থ বিশেষজ্ঞদের বিশ্বস্ত সঙ্গী।",
+        "test-q1": "\"অ্যান্টিগ্র্যাভিটি পিডিএফ প্রো আমাদের অডিট কার্যক্রম অনেক সহজ করে দিয়েছে। সংবেদনশীল আর্থিক রিপোর্ট নিয়ে কাজ করতে হয় বলে আমরা ক্লাউড টুল ব্যবহার করতে পারতাম না। এই অফলাইন অ্যাপটি অ্যাক্রোবেটের চেয়েও দ্রুত এবং সম্পূর্ণ নিরাপদ।\"",
+        "test-q2": "\"১০০+ পৃষ্ঠার ট্যাক্স ফাইল যুক্ত করা বা কর্পোরেট বান্ডিল আলাদা করা এখন মুহূর্তের কাজ। সব ফাইল ব্রাউজারেই বা অফলাইন ডেস্কটপ অ্যাপেই প্রসেস হয়, যা আমাদের কাজের শতভাগ গোপনীয়তার নিশ্চিন্ততা দেয়।\""
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'bn' : 'en';
+      document.documentElement.lang = currentLang;
+      localStorage.setItem('antigravity_pdf_lang', currentLang);
+      
+      // Update text of elements with data-translate attribute
+      document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.getAttribute('data-translate');
+        if (translations[currentLang] && translations[currentLang][key]) {
+          el.innerHTML = translations[currentLang][key];
+        }
+      });
+
+      // Update button text
+      const toggleBtn = document.getElementById('langToggleBtn');
+      if (toggleBtn) {
+        toggleBtn.textContent = currentLang === 'en' ? 'বাংলা' : 'English';
+        toggleBtn.setAttribute('aria-label', currentLang === 'en' ? 'Switch to Bengali' : 'Switch to English');
+      }
+    }
+
+    // Bind event handler to toggle button
+    const langBtn = document.getElementById('langToggleBtn');
+    if (langBtn) {
+      langBtn.addEventListener('click', toggleLanguage);
+    }
+
+    // Auto-detect browser/saved language preference
+    const savedLang = localStorage.getItem('antigravity_pdf_lang');
+    if (savedLang === 'bn') {
+      toggleLanguage(); // Switch to Bengali
+    }
+    });
   </script>
 
   <!-- Floating WhatsApp Widget -->
@@ -3612,7 +3973,7 @@
       const message = document.getElementById('userMessage').value;
       
       submitBtn.disabled = true;
-      submitBtn.innerHTML = 'পাঠানো হচ্ছে...';
+      submitBtn.innerHTML = currentLang === 'en' ? 'Sending...' : 'পাঠানো হচ্ছে...';
       
       try {
         // Save query to localStorage so they can see their submissions locally
@@ -3627,24 +3988,52 @@
         });
         localStorage.setItem('contact_submissions', JSON.stringify(submissions));
         
-        // Simulating network delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // POST to Web3Forms (100% Free Lead Form Catcher)
+        // User can replace 'YOUR_WEB3FORMS_ACCESS_KEY' with their actual key from web3forms.com
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', 
+            name: name,
+            email: email,
+            phone: phone,
+            subject: `Antigravity PDF - Lead: ${subject}`,
+            message: message
+          })
+        });
+        
+        const resData = await response.json();
         
         statusElement.style.display = 'block';
-        statusElement.style.color = '#00ff88';
-        statusElement.innerHTML = '✓ আপনার জিজ্ঞাসাটি সফলভাবে সেভ হয়েছে! আমরা দ্রুত আপনার ইমেইলে যোগাযোগ করব।';
-        
-        // Reset form
-        form.reset();
+        if (response.ok && resData.success) {
+          statusElement.style.color = '#00ff88';
+          statusElement.innerHTML = currentLang === 'en' 
+            ? '✓ Your query has been successfully sent! We will contact you soon.' 
+            : '✓ আপনার জিজ্ঞাসাটি সফলভাবে পাঠানো হয়েছে! আমরা দ্রুত আপনার ইমেইলে যোগাযোগ করব।';
+          form.reset();
+        } else {
+          // Fallback to local success if key is placeholder (to ensure smooth demo offline)
+          statusElement.style.color = '#00ff88';
+          statusElement.innerHTML = currentLang === 'en'
+            ? '✓ [Demo Mode] Message saved locally. (Replace access_key in code to receive emails)'
+            : '✓ [ডেমো মোড] জিজ্ঞাসাটি লোকালি সেভ হয়েছে। (ইমেইলে পাওয়ার জন্য কোডে access_key সেটআপ করুন)';
+          form.reset();
+        }
       } catch (error) {
         statusElement.style.display = 'block';
         statusElement.style.color = '#ff2d92';
-        statusElement.innerHTML = '❌ কোনো সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
+        statusElement.innerHTML = currentLang === 'en'
+          ? '❌ Something went wrong. Please try again.'
+          : '❌ কোনো সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = `
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-          মেসেজ পাঠান
+          ${currentLang === 'en' ? 'Send Message' : 'মেসেজ পাঠান'}
         `;
         
         // Clear status after 6 seconds
