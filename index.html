@@ -220,14 +220,14 @@
       position: absolute;
       inset: 0;
       background-image: 
-        linear-gradient(rgba(56, 189, 248, 0.09) 1px, transparent 1px), 
-        linear-gradient(90deg, rgba(56, 189, 248, 0.09) 1px, transparent 1px);
+        linear-gradient(rgba(56, 189, 248, 0.22) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(56, 189, 248, 0.22) 1px, transparent 1px);
       background-size: 30px 30px;
       animation: gridPulse 8s ease-in-out infinite;
     }
     @keyframes gridPulse {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 0.95; }
+      0%, 100% { opacity: 0.75; }
+      50% { opacity: 1.0; }
     }
     .orb {
       position: absolute;
@@ -718,10 +718,10 @@
     }
 
     .feature-card {
-      background: rgba(10, 22, 40, 0.4);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid color-mix(in srgb, var(--card-glow, var(--primary)) 25%, rgba(255, 255, 255, 0.03));
+      background: rgba(10, 22, 40, 0.25);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      border: 1px solid color-mix(in srgb, var(--card-glow, var(--primary)) 35%, rgba(255, 255, 255, 0.06));
       border-radius: var(--radius-lg);
       padding: 32px;
       transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -845,9 +845,9 @@
     }
 
     .price-card {
-      background: rgba(10, 22, 40, 0.4);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(10, 22, 40, 0.25);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 40px;
@@ -869,9 +869,9 @@
     }
 
     .price-card.featured {
-      background: linear-gradient(180deg, rgba(184, 41, 249, 0.15) 0%, rgba(10, 22, 40, 0.65) 100%);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(184, 41, 249, 0.15) 0%, rgba(10, 22, 40, 0.45) 100%);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
       border-color: var(--primary);
       box-shadow: 0 25px 60px rgba(184, 41, 249, 0.25);
       transform: translateY(-8px);
@@ -1009,9 +1009,9 @@
     }
 
     .faq-item {
-      background: rgba(10, 22, 40, 0.35);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(10, 22, 40, 0.22);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px;
@@ -1393,15 +1393,15 @@
     }
 
     .contact-info-card {
-      background: rgba(10, 22, 40, 0.4);
+      background: rgba(10, 22, 40, 0.25);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 40px;
       display: flex;
       flex-direction: column;
       gap: 32px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2),
                   inset 0 1px 1px rgba(255, 255, 255, 0.05);
     }
@@ -1474,15 +1474,15 @@
     }
 
     .contact-form-card {
-      background: rgba(10, 22, 40, 0.55);
+      background: rgba(10, 22, 40, 0.35);
       border: 1px solid rgba(184, 41, 249, 0.25);
       border-radius: var(--radius-lg);
       padding: 40px;
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 
                   0 0 30px rgba(184, 41, 249, 0.05),
                   inset 0 1px 1px rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
     }
 
     .contact-form-card h3 {
