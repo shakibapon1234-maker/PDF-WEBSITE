@@ -122,9 +122,9 @@
 
   <style>
     :root {
-      --bg-base: #050d1a;
-      --bg-surface: #0a1628;
-      --bg-raised: #0f2040;
+      --bg-base: #030712;
+      --bg-surface: #0b1528;
+      --bg-raised: #111f38;
       
       --primary: #a78bfa;
       --primary-glow: rgba(167, 139, 250, 0.4);
@@ -219,8 +219,10 @@
     .grid-lines {
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(rgba(0, 212, 200, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 200, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
+      background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.09) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(56, 189, 248, 0.09) 1px, transparent 1px);
+      background-size: 30px 30px;
       animation: gridPulse 8s ease-in-out infinite;
     }
     @keyframes gridPulse {
@@ -306,7 +308,7 @@
 
     header.scrolled {
       top: 8px;
-      background: rgba(5, 13, 26, 0.9);
+      background: rgba(3, 7, 18, 0.85);
       border-color: rgba(0, 212, 200, 0.3);
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
     }
@@ -716,14 +718,18 @@
     }
 
     .feature-card {
-      background: rgba(14, 14, 27, 0.45);
-      border: 1px solid var(--border);
+      background: rgba(10, 22, 40, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid color-mix(in srgb, var(--card-glow, var(--primary)) 25%, rgba(255, 255, 255, 0.03));
       border-radius: var(--radius-lg);
       padding: 32px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
       cursor: pointer;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.05);
     }
 
     .feature-card::before {
@@ -741,7 +747,8 @@
     .feature-card:hover {
       transform: translateY(-6px);
       border-color: var(--card-glow, var(--primary));
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5),
+                  0 0 20px color-mix(in srgb, var(--card-glow, var(--primary)) 30%, transparent),
                   inset 0 0 15px rgba(255, 255, 255, 0.02);
     }
 
@@ -838,22 +845,41 @@
     }
 
     .price-card {
-      background: rgba(14, 14, 27, 0.5);
+      background: rgba(10, 22, 40, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 40px;
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: all 0.3s;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       overflow: hidden;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .price-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5),
+                  0 0 20px rgba(167, 139, 250, 0.25),
+                  inset 0 0 15px rgba(255, 255, 255, 0.02);
     }
 
     .price-card.featured {
-      background: linear-gradient(180deg, rgba(184, 41, 249, 0.1) 0%, rgba(14, 14, 27, 0.8) 100%);
+      background: linear-gradient(180deg, rgba(184, 41, 249, 0.15) 0%, rgba(10, 22, 40, 0.65) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-color: var(--primary);
-      box-shadow: 0 25px 60px rgba(184, 41, 249, 0.2);
+      box-shadow: 0 25px 60px rgba(184, 41, 249, 0.25);
       transform: translateY(-8px);
+    }
+
+    .price-card.featured:hover {
+      box-shadow: 0 25px 60px rgba(184, 41, 249, 0.35),
+                  0 0 25px rgba(167, 139, 250, 0.35);
     }
 
     .price-card.featured::after {
@@ -983,17 +1009,23 @@
     }
 
     .faq-item {
-      background: rgba(14, 14, 27, 0.4);
+      background: rgba(10, 22, 40, 0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px;
       cursor: pointer;
       transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.05);
     }
 
     .faq-item:hover {
-      border-color: rgba(255, 255, 255, 0.15);
-      background: rgba(14, 14, 27, 0.6);
+      border-color: rgba(0, 212, 200, 0.3);
+      background: rgba(10, 22, 40, 0.5);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25),
+                  0 0 15px rgba(0, 212, 200, 0.1);
     }
 
     .faq-question {
@@ -1361,7 +1393,7 @@
     }
 
     .contact-info-card {
-      background: rgba(14, 14, 27, 0.45);
+      background: rgba(10, 22, 40, 0.4);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 40px;
@@ -1370,6 +1402,8 @@
       gap: 32px;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.05);
     }
 
     .contact-info-card h3 {
@@ -1440,11 +1474,13 @@
     }
 
     .contact-form-card {
-      background: rgba(14, 14, 27, 0.65);
+      background: rgba(10, 22, 40, 0.55);
       border: 1px solid rgba(184, 41, 249, 0.25);
       border-radius: var(--radius-lg);
       padding: 40px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(184, 41, 249, 0.05);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 
+                  0 0 30px rgba(184, 41, 249, 0.05),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
     }
